@@ -6,7 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Interpolant1D.h
+/Users/panos/Documents/programming/Interpolation1D/tests/Interpolant1DTest.cpp
+gnuplot_i.hpp
+/Users/panos/Documents/programming/Interpolation1D/tests/gnuplot_i.hpp
+Interpolant1D.h
+/Users/panos/Documents/programming/Interpolation1D/tests/Interpolant1D.h
+vector
+-
+iostream
+-
+exception
+-
+cmath
+-
+memory
+-
+chrono
+-
+
+/Users/panos/include/Interpolant1D.h
 map
 -
 vector
@@ -34,22 +52,6 @@ memory
 string
 -
 algorithm
--
-
-/Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Interpolant1D_test.cpp
-gnuplot_i.hpp
-/Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/gnuplot_i.hpp
-Interpolant1D.h
-/Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Interpolant1D.h
-vector
--
-iostream
--
-exception
--
-cmath
--
-memory
 -
 
 /opt/local/include/gnuplot_i.hpp

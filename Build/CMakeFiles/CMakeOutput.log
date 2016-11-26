@@ -1,6 +1,19 @@
-The system is: Darwin - 15.5.0 - x86_64
+The system is: Darwin - 15.6.0 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is AppleClang, found in "/Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/3.6.2/CompilerIdC/a.out"
+
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: /opt/local/bin/c++ 
+Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ 
 Build flags: 
 Id flags: 
 
@@ -10,141 +23,255 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Build/CMakeFiles/3.6.2/CompilerIdCXX/a.out"
+The CXX compiler identification is AppleClang, found in "/Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/3.6.2/CompilerIdCXX/a.out"
 
-Determining if the CXX compiler works passed with the following output:
-Change Dir: /Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Build/CMakeFiles/CMakeTmp
+Determining if the C compiler works passed with the following output:
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_00911/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_00911.dir/build.make CMakeFiles/cmTC_00911.dir/build
-Building CXX object CMakeFiles/cmTC_00911.dir/testCXXCompiler.cxx.o
-/opt/local/bin/c++      -o CMakeFiles/cmTC_00911.dir/testCXXCompiler.cxx.o -c /Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_00911
-/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_00911.dir/link.txt --verbose=1
-/opt/local/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_00911.dir/testCXXCompiler.cxx.o  -o cmTC_00911  
+Run Build Command:"/usr/bin/make" "cmTC_ba515/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ba515.dir/build.make CMakeFiles/cmTC_ba515.dir/build
+Building C object CMakeFiles/cmTC_ba515.dir/testCCompiler.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang     -o CMakeFiles/cmTC_ba515.dir/testCCompiler.c.o   -c /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_ba515
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ba515.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_ba515.dir/testCCompiler.c.o  -o cmTC_ba515  
 
 
-Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Build/CMakeFiles/CMakeTmp
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ae472/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ae472.dir/build.make CMakeFiles/cmTC_ae472.dir/build
-Building CXX object CMakeFiles/cmTC_ae472.dir/CMakeCXXCompilerABI.cpp.o
-/opt/local/bin/c++      -o CMakeFiles/cmTC_ae472.dir/CMakeCXXCompilerABI.cpp.o -c /opt/local/share/cmake-3.6/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_ae472
-/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ae472.dir/link.txt --verbose=1
-/opt/local/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_ae472.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_ae472   
-Using built-in specs.
-COLLECT_GCC=/opt/local/bin/c++
-COLLECT_LTO_WRAPPER=/opt/local/libexec/gcc/x86_64-apple-darwin15/5.4.0/lto-wrapper
-Target: x86_64-apple-darwin15
-Configured with: /opt/local/var/macports/build/_opt_mports_dports_lang_gcc5/gcc5/work/gcc-5.4.0/configure --prefix=/opt/local --build=x86_64-apple-darwin15 --enable-languages=c,c++,objc,obj-c++,lto,fortran,java --libdir=/opt/local/lib/gcc5 --includedir=/opt/local/include/gcc5 --infodir=/opt/local/share/info --mandir=/opt/local/share/man --datarootdir=/opt/local/share/gcc-5 --with-local-prefix=/opt/local --with-system-zlib --disable-nls --program-suffix=-mp-5 --with-gxx-include-dir=/opt/local/include/gcc5/c++/ --with-gmp=/opt/local --with-mpfr=/opt/local --with-mpc=/opt/local --with-isl=/opt/local --enable-stage1-checking --disable-multilib --enable-lto --enable-libstdcxx-time --with-build-config=bootstrap-debug --with-as=/opt/local/bin/as --with-ld=/opt/local/bin/ld --with-ar=/opt/local/bin/ar --with-bugurl=https://trac.macports.org/newticket --with-pkgversion='MacPorts gcc5 5.4.0_0'
+Run Build Command:"/usr/bin/make" "cmTC_2679d/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2679d.dir/build.make CMakeFiles/cmTC_2679d.dir/build
+Building C object CMakeFiles/cmTC_2679d.dir/CMakeCCompilerABI.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang     -o CMakeFiles/cmTC_2679d.dir/CMakeCCompilerABI.c.o   -c /opt/local/share/cmake-3.6/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_2679d
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2679d.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang    -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_2679d.dir/CMakeCCompilerABI.c.o  -o cmTC_2679d   
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.6.0
 Thread model: posix
-gcc version 5.4.0 (MacPorts gcc5 5.4.0_0) 
-COMPILER_PATH=/opt/local/libexec/gcc/x86_64-apple-darwin15/5.4.0/:/opt/local/libexec/gcc/x86_64-apple-darwin15/5.4.0/:/opt/local/libexec/gcc/x86_64-apple-darwin15/:/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0/:/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/
-LIBRARY_PATH=/opt/local/lib/:./:/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0/:/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0/../../../:/usr/lib/
-COLLECT_GCC_OPTIONS='-mmacosx-version-min=10.11.5' '-v' '-o' 'cmTC_ae472' '-shared-libgcc' '-mtune=core2'
- /opt/local/libexec/gcc/x86_64-apple-darwin15/5.4.0/collect2 -dynamic -arch x86_64 -macosx_version_min 10.11.5 -weak_reference_mismatches non-weak -o cmTC_ae472 -L/opt/local/lib -L. -L/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0 -L/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0/../../.. -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_ae472.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -no_compact_unwind -lSystem -lgcc_ext.10.5 -lgcc -lSystem -v
-collect2 version 5.4.0
-/opt/local/bin/ld -dynamic -arch x86_64 -macosx_version_min 10.11.5 -weak_reference_mismatches non-weak -o cmTC_ae472 -L/opt/local/lib -L. -L/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0 -L/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0/../../.. -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_ae472.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -no_compact_unwind -lSystem -lgcc_ext.10.5 -lgcc -lSystem -v
-@(#)PROGRAM:ld  PROJECT:ld64-264.3.102
-configured to support archs: i386 x86_64 x86_64h armv6 armv7 armv7s armv7m armv7k arm64 (tvOS)
-@(#)PROGRAM:ld  PROJECT:ld64-264.3.102
-configured to support archs: i386 x86_64 x86_64h armv6 armv7 armv7s armv7m armv7k arm64 (tvOS)
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTC_2679d -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_2679d.dir/CMakeCCompilerABI.c.o -L/opt/local/lib/ -L/opt/local/libexec/llvm-3.9/lib -L. -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-253.9
+configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
 Library search paths:
-	/opt/local/lib
+	/opt/local/lib/
+	/opt/local/libexec/llvm-3.9/lib
 	.
-	/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0
-	/opt/local/lib/gcc5
 	/usr/lib
 	/usr/local/lib
 Framework search paths:
 	/Library/Frameworks/
 	/System/Library/Frameworks/
- /opt/local/bin/nm -n CMakeFiles/cmTC_ae472.dir/CMakeCXXCompilerABI.cpp.o
 
 
-Parsed CXX implicit link information from above output:
+Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_ae472/fast"]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ae472.dir/build.make CMakeFiles/cmTC_ae472.dir/build]
-  ignore line: [Building CXX object CMakeFiles/cmTC_ae472.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/opt/local/bin/c++      -o CMakeFiles/cmTC_ae472.dir/CMakeCXXCompilerABI.cpp.o -c /opt/local/share/cmake-3.6/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_ae472]
-  ignore line: [/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ae472.dir/link.txt --verbose=1]
-  ignore line: [/opt/local/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_ae472.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_ae472   ]
-  ignore line: [Using built-in specs.]
-  ignore line: [COLLECT_GCC=/opt/local/bin/c++]
-  ignore line: [COLLECT_LTO_WRAPPER=/opt/local/libexec/gcc/x86_64-apple-darwin15/5.4.0/lto-wrapper]
-  ignore line: [Target: x86_64-apple-darwin15]
-  ignore line: [Configured with: /opt/local/var/macports/build/_opt_mports_dports_lang_gcc5/gcc5/work/gcc-5.4.0/configure --prefix=/opt/local --build=x86_64-apple-darwin15 --enable-languages=c,c++,objc,obj-c++,lto,fortran,java --libdir=/opt/local/lib/gcc5 --includedir=/opt/local/include/gcc5 --infodir=/opt/local/share/info --mandir=/opt/local/share/man --datarootdir=/opt/local/share/gcc-5 --with-local-prefix=/opt/local --with-system-zlib --disable-nls --program-suffix=-mp-5 --with-gxx-include-dir=/opt/local/include/gcc5/c++/ --with-gmp=/opt/local --with-mpfr=/opt/local --with-mpc=/opt/local --with-isl=/opt/local --enable-stage1-checking --disable-multilib --enable-lto --enable-libstdcxx-time --with-build-config=bootstrap-debug --with-as=/opt/local/bin/as --with-ld=/opt/local/bin/ld --with-ar=/opt/local/bin/ar --with-bugurl=https://trac.macports.org/newticket --with-pkgversion='MacPorts gcc5 5.4.0_0']
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_2679d/fast"]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2679d.dir/build.make CMakeFiles/cmTC_2679d.dir/build]
+  ignore line: [Building C object CMakeFiles/cmTC_2679d.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang     -o CMakeFiles/cmTC_2679d.dir/CMakeCCompilerABI.c.o   -c /opt/local/share/cmake-3.6/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_2679d]
+  ignore line: [/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2679d.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang    -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_2679d.dir/CMakeCCompilerABI.c.o  -o cmTC_2679d   ]
+  ignore line: [Apple LLVM version 7.0.2 (clang-700.1.81)]
+  ignore line: [Target: x86_64-apple-darwin15.6.0]
   ignore line: [Thread model: posix]
-  ignore line: [gcc version 5.4.0 (MacPorts gcc5 5.4.0_0) ]
-  ignore line: [COMPILER_PATH=/opt/local/libexec/gcc/x86_64-apple-darwin15/5.4.0/:/opt/local/libexec/gcc/x86_64-apple-darwin15/5.4.0/:/opt/local/libexec/gcc/x86_64-apple-darwin15/:/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0/:/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/]
-  ignore line: [LIBRARY_PATH=/opt/local/lib/:./:/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0/:/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0/../../../:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-mmacosx-version-min=10.11.5' '-v' '-o' 'cmTC_ae472' '-shared-libgcc' '-mtune=core2']
-  link line: [ /opt/local/libexec/gcc/x86_64-apple-darwin15/5.4.0/collect2 -dynamic -arch x86_64 -macosx_version_min 10.11.5 -weak_reference_mismatches non-weak -o cmTC_ae472 -L/opt/local/lib -L. -L/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0 -L/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0/../../.. -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_ae472.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -no_compact_unwind -lSystem -lgcc_ext.10.5 -lgcc -lSystem -v]
-    arg [/opt/local/libexec/gcc/x86_64-apple-darwin15/5.4.0/collect2] ==> ignore
+  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTC_2679d -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_2679d.dir/CMakeCCompilerABI.c.o -L/opt/local/lib/ -L/opt/local/libexec/llvm-3.9/lib -L. -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
     arg [-dynamic] ==> ignore
     arg [-arch] ==> ignore
     arg [x86_64] ==> ignore
     arg [-macosx_version_min] ==> ignore
-    arg [10.11.5] ==> ignore
-    arg [-weak_reference_mismatches] ==> ignore
-    arg [non-weak] ==> ignore
+    arg [10.11.0] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_ae472] ==> ignore
-    arg [-L/opt/local/lib] ==> dir [/opt/local/lib]
-    arg [-L.] ==> ignore
-    arg [-L/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0] ==> dir [/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0]
-    arg [-L/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0/../../..] ==> dir [/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0/../../..]
+    arg [cmTC_2679d] ==> ignore
     arg [-search_paths_first] ==> ignore
     arg [-headerpad_max_install_names] ==> ignore
     arg [-v] ==> ignore
-    arg [CMakeFiles/cmTC_ae472.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
-    arg [-lstdc++] ==> lib [stdc++]
-    arg [-no_compact_unwind] ==> ignore
+    arg [CMakeFiles/cmTC_2679d.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-L/opt/local/lib/] ==> dir [/opt/local/lib/]
+    arg [-L/opt/local/libexec/llvm-3.9/lib] ==> dir [/opt/local/libexec/llvm-3.9/lib]
+    arg [-L.] ==> ignore
     arg [-lSystem] ==> lib [System]
-    arg [-lgcc_ext.10.5] ==> lib [gcc_ext.10.5]
-    arg [-lgcc] ==> lib [gcc]
-    arg [-lSystem] ==> lib [System]
-    arg [-v] ==> ignore
-  Library search paths: [;/opt/local/lib;.;/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0;/opt/local/lib/gcc5;/usr/lib;/usr/local/lib]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/opt/local/lib/;/opt/local/libexec/llvm-3.9/lib;.;/usr/lib;/usr/local/lib]
   Framework search paths: [;/Library/Frameworks/;/System/Library/Frameworks/]
   remove lib [System]
-  remove lib [gcc_ext.10.5]
-  remove lib [gcc]
-  remove lib [System]
-  collapse library dir [/opt/local/lib] ==> [/opt/local/lib]
-  collapse library dir [/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0] ==> [/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0]
-  collapse library dir [/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0/../../..] ==> [/opt/local/lib/gcc5]
-  collapse library dir [/opt/local/lib] ==> [/opt/local/lib]
-  collapse library dir [.] ==> [/Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D]
-  collapse library dir [/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0] ==> [/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0]
-  collapse library dir [/opt/local/lib/gcc5] ==> [/opt/local/lib/gcc5]
+  collapse lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/opt/local/lib/] ==> [/opt/local/lib]
+  collapse library dir [/opt/local/libexec/llvm-3.9/lib] ==> [/opt/local/libexec/llvm-3.9/lib]
+  collapse library dir [/opt/local/lib/] ==> [/opt/local/lib]
+  collapse library dir [/opt/local/libexec/llvm-3.9/lib] ==> [/opt/local/libexec/llvm-3.9/lib]
+  collapse library dir [.] ==> [/Users/panos/Documents/programming/Interpolation1D]
   collapse library dir [/usr/lib] ==> [/usr/lib]
   collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
   collapse framework dir [/Library/Frameworks/] ==> [/Library/Frameworks]
   collapse framework dir [/System/Library/Frameworks/] ==> [/System/Library/Frameworks]
-  implicit libs: [stdc++]
-  implicit dirs: [/opt/local/lib;/opt/local/lib/gcc5/gcc/x86_64-apple-darwin15/5.4.0;/opt/local/lib/gcc5;/Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D;/usr/lib;/usr/local/lib]
+  implicit libs: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  implicit dirs: [/opt/local/lib;/opt/local/libexec/llvm-3.9/lib;/Users/panos/Documents/programming/Interpolation1D;/usr/lib;/usr/local/lib]
+  implicit fwks: [/Library/Frameworks;/System/Library/Frameworks]
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5813c/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_5813c.dir/build.make CMakeFiles/cmTC_5813c.dir/build
+Building C object CMakeFiles/cmTC_5813c.dir/feature_tests.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang    -std=c11 -o CMakeFiles/cmTC_5813c.dir/feature_tests.c.o   -c /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_5813c
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5813c.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_5813c.dir/feature_tests.c.o  -o cmTC_5813c  
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8b9a1/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_8b9a1.dir/build.make CMakeFiles/cmTC_8b9a1.dir/build
+Building C object CMakeFiles/cmTC_8b9a1.dir/feature_tests.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang    -std=c99 -o CMakeFiles/cmTC_8b9a1.dir/feature_tests.c.o   -c /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_8b9a1
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8b9a1.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_8b9a1.dir/feature_tests.c.o  -o cmTC_8b9a1  
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d40ca/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_d40ca.dir/build.make CMakeFiles/cmTC_d40ca.dir/build
+Building C object CMakeFiles/cmTC_d40ca.dir/feature_tests.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang    -std=c90 -o CMakeFiles/cmTC_d40ca.dir/feature_tests.c.o   -c /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_d40ca
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d40ca.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_d40ca.dir/feature_tests.c.o  -o cmTC_d40ca  
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ea870/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ea870.dir/build.make CMakeFiles/cmTC_ea870.dir/build
+Building CXX object CMakeFiles/cmTC_ea870.dir/testCXXCompiler.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++      -o CMakeFiles/cmTC_ea870.dir/testCXXCompiler.cxx.o -c /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_ea870
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ea870.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_ea870.dir/testCXXCompiler.cxx.o  -o cmTC_ea870  
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6cafe/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_6cafe.dir/build.make CMakeFiles/cmTC_6cafe.dir/build
+Building CXX object CMakeFiles/cmTC_6cafe.dir/CMakeCXXCompilerABI.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++      -o CMakeFiles/cmTC_6cafe.dir/CMakeCXXCompilerABI.cpp.o -c /opt/local/share/cmake-3.6/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_6cafe
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6cafe.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_6cafe.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_6cafe   
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.6.0
+Thread model: posix
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTC_6cafe -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_6cafe.dir/CMakeCXXCompilerABI.cpp.o -L/opt/local/lib/ -L/opt/local/libexec/llvm-3.9/lib -L. -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-253.9
+configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
+Library search paths:
+	/opt/local/lib/
+	/opt/local/libexec/llvm-3.9/lib
+	.
+	/usr/lib
+	/usr/local/lib
+Framework search paths:
+	/Library/Frameworks/
+	/System/Library/Frameworks/
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_6cafe/fast"]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_6cafe.dir/build.make CMakeFiles/cmTC_6cafe.dir/build]
+  ignore line: [Building CXX object CMakeFiles/cmTC_6cafe.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++      -o CMakeFiles/cmTC_6cafe.dir/CMakeCXXCompilerABI.cpp.o -c /opt/local/share/cmake-3.6/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_6cafe]
+  ignore line: [/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6cafe.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_6cafe.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_6cafe   ]
+  ignore line: [Apple LLVM version 7.0.2 (clang-700.1.81)]
+  ignore line: [Target: x86_64-apple-darwin15.6.0]
+  ignore line: [Thread model: posix]
+  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTC_6cafe -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_6cafe.dir/CMakeCXXCompilerABI.cpp.o -L/opt/local/lib/ -L/opt/local/libexec/llvm-3.9/lib -L. -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.11.0] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_6cafe] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_6cafe.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-L/opt/local/lib/] ==> dir [/opt/local/lib/]
+    arg [-L/opt/local/libexec/llvm-3.9/lib] ==> dir [/opt/local/libexec/llvm-3.9/lib]
+    arg [-L.] ==> ignore
+    arg [-lc++] ==> lib [c++]
+    arg [-lSystem] ==> lib [System]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/opt/local/lib/;/opt/local/libexec/llvm-3.9/lib;.;/usr/lib;/usr/local/lib]
+  Framework search paths: [;/Library/Frameworks/;/System/Library/Frameworks/]
+  remove lib [System]
+  collapse lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/opt/local/lib/] ==> [/opt/local/lib]
+  collapse library dir [/opt/local/libexec/llvm-3.9/lib] ==> [/opt/local/libexec/llvm-3.9/lib]
+  collapse library dir [/opt/local/lib/] ==> [/opt/local/lib]
+  collapse library dir [/opt/local/libexec/llvm-3.9/lib] ==> [/opt/local/libexec/llvm-3.9/lib]
+  collapse library dir [.] ==> [/Users/panos/Documents/programming/Interpolation1D]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+  collapse framework dir [/Library/Frameworks/] ==> [/Library/Frameworks]
+  collapse framework dir [/System/Library/Frameworks/] ==> [/System/Library/Frameworks]
+  implicit libs: [c++;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  implicit dirs: [/opt/local/lib;/opt/local/libexec/llvm-3.9/lib;/Users/panos/Documents/programming/Interpolation1D;/usr/lib;/usr/local/lib]
   implicit fwks: [/Library/Frameworks;/System/Library/Frameworks]
 
 
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Build/CMakeFiles/CMakeTmp
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_55934/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_55934.dir/build.make CMakeFiles/cmTC_55934.dir/build
-Building CXX object CMakeFiles/cmTC_55934.dir/feature_tests.cxx.o
-/opt/local/bin/c++     -std=c++14 -o CMakeFiles/cmTC_55934.dir/feature_tests.cxx.o -c /Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_55934
-/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_55934.dir/link.txt --verbose=1
-/opt/local/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_55934.dir/feature_tests.cxx.o  -o cmTC_55934  
+Run Build Command:"/usr/bin/make" "cmTC_4367e/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_4367e.dir/build.make CMakeFiles/cmTC_4367e.dir/build
+Building CXX object CMakeFiles/cmTC_4367e.dir/feature_tests.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++     -std=c++14 -o CMakeFiles/cmTC_4367e.dir/feature_tests.cxx.o -c /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_4367e
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4367e.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_4367e.dir/feature_tests.cxx.o  -o cmTC_4367e  
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -195,7 +322,7 @@ Linking CXX executable cmTC_55934
     Feature record: CXX_FEATURE:1cxx_static_assert
     Feature record: CXX_FEATURE:1cxx_strong_enums
     Feature record: CXX_FEATURE:1cxx_template_template_parameters
-    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:0cxx_thread_local
     Feature record: CXX_FEATURE:1cxx_trailing_return_types
     Feature record: CXX_FEATURE:1cxx_unicode_literals
     Feature record: CXX_FEATURE:1cxx_uniform_initialization
@@ -207,15 +334,15 @@ Linking CXX executable cmTC_55934
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Build/CMakeFiles/CMakeTmp
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_1804d/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_1804d.dir/build.make CMakeFiles/cmTC_1804d.dir/build
-Building CXX object CMakeFiles/cmTC_1804d.dir/feature_tests.cxx.o
-/opt/local/bin/c++     -std=c++11 -o CMakeFiles/cmTC_1804d.dir/feature_tests.cxx.o -c /Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_1804d
-/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1804d.dir/link.txt --verbose=1
-/opt/local/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_1804d.dir/feature_tests.cxx.o  -o cmTC_1804d  
+Run Build Command:"/usr/bin/make" "cmTC_cd1bf/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_cd1bf.dir/build.make CMakeFiles/cmTC_cd1bf.dir/build
+Building CXX object CMakeFiles/cmTC_cd1bf.dir/feature_tests.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++     -std=c++11 -o CMakeFiles/cmTC_cd1bf.dir/feature_tests.cxx.o -c /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_cd1bf
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd1bf.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_cd1bf.dir/feature_tests.cxx.o  -o cmTC_cd1bf  
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -266,7 +393,7 @@ Linking CXX executable cmTC_1804d
     Feature record: CXX_FEATURE:1cxx_static_assert
     Feature record: CXX_FEATURE:1cxx_strong_enums
     Feature record: CXX_FEATURE:1cxx_template_template_parameters
-    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:0cxx_thread_local
     Feature record: CXX_FEATURE:1cxx_trailing_return_types
     Feature record: CXX_FEATURE:1cxx_unicode_literals
     Feature record: CXX_FEATURE:1cxx_uniform_initialization
@@ -278,15 +405,15 @@ Linking CXX executable cmTC_1804d
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Build/CMakeFiles/CMakeTmp
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_5185f/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_5185f.dir/build.make CMakeFiles/cmTC_5185f.dir/build
-Building CXX object CMakeFiles/cmTC_5185f.dir/feature_tests.cxx.o
-/opt/local/bin/c++     -std=c++98 -o CMakeFiles/cmTC_5185f.dir/feature_tests.cxx.o -c /Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_5185f
-/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5185f.dir/link.txt --verbose=1
-/opt/local/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_5185f.dir/feature_tests.cxx.o  -o cmTC_5185f  
+Run Build Command:"/usr/bin/make" "cmTC_c6d39/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_c6d39.dir/build.make CMakeFiles/cmTC_c6d39.dir/build
+Building CXX object CMakeFiles/cmTC_c6d39.dir/feature_tests.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++     -std=c++98 -o CMakeFiles/cmTC_c6d39.dir/feature_tests.cxx.o -c /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_c6d39
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c6d39.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_c6d39.dir/feature_tests.cxx.o  -o cmTC_c6d39  
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -346,3 +473,53 @@ Linking CXX executable cmTC_5185f
     Feature record: CXX_FEATURE:0cxx_variable_templates
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_bbe1a/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_bbe1a.dir/build.make CMakeFiles/cmTC_bbe1a.dir/build
+Building C object CMakeFiles/cmTC_bbe1a.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang     -o CMakeFiles/cmTC_bbe1a.dir/CheckIncludeFile.c.o   -c /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_bbe1a
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bbe1a.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_bbe1a.dir/CheckIncludeFile.c.o  -o cmTC_bbe1a  
+
+
+Determining if the pthread_create exist passed with the following output:
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4c22b/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_4c22b.dir/build.make CMakeFiles/cmTC_4c22b.dir/build
+Building C object CMakeFiles/cmTC_4c22b.dir/CheckSymbolExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang     -o CMakeFiles/cmTC_4c22b.dir/CheckSymbolExists.c.o   -c /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_4c22b
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4c22b.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_4c22b.dir/CheckSymbolExists.c.o  -o cmTC_4c22b  
+
+File /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function sgemm_ exists passed with the following output:
+Change Dir: /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_32c21/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_32c21.dir/build.make CMakeFiles/cmTC_32c21.dir/build
+Building C object CMakeFiles/cmTC_32c21.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang    -DCHECK_FUNCTION_EXISTS=sgemm_   -o CMakeFiles/cmTC_32c21.dir/CheckFunctionExists.c.o   -c /opt/local/share/cmake-3.6/Modules/CheckFunctionExists.c
+Linking C executable cmTC_32c21
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32c21.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang   -DCHECK_FUNCTION_EXISTS=sgemm_ -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_32c21.dir/CheckFunctionExists.c.o  -o cmTC_32c21  /opt/local/lib/libopenblas.dylib 
+
+

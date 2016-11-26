@@ -12,6 +12,7 @@
 #include <exception>
 #include <cmath>
 #include <memory>
+#include <chrono>
 
 using namespace Panos_1DInterp;
 
@@ -28,14 +29,14 @@ int main()
 	auto hdd = [](double x){return -.25*cos(.5*x);};
 
 
-	for (auto i=0; i<100;++i)
+	for (auto i=0; i<1000000;++i)
 	{
-		x.push_back(i/10.0);
-		y.push_back(h(i/10.0));
+		x.push_back(i/100000.0);
+		y.push_back(h(x.back()));
 	}
 
 	
-
+	auto start = std::chrono::high_resolution_clock::now();
 	std::unique_ptr<Interpolant1D> y_calc{};
 	try{
 	y_calc=make_Interpolant1D(x,y,"cspline");
@@ -64,11 +65,17 @@ int main()
 	  
 	  //  std::cout<< "xi " << u<< " y " <<yi.back()<<" vs "<< h(u)<<"\n";
 	}
+
+	auto finish = std::chrono::high_resolution_clock::now();
+
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(finish-start).count();
+	std::cout<<"elapsed time "<<duration<<" milliseconds"<<std::endl;
+
         Gnuplot g1;
 
 	g1.set_title(y_calc->method_name().c_str());
 
-        g1.set_style("points").plot_xy(x,y,"user-defined doubles");
+	// g1.set_style("points").plot_xy(x,y,"user-defined doubles");
 
         //g1.reset_plot();
         //cout << endl << endl << "*** user-defined lists of points (x,y)" << endl;
@@ -77,6 +84,9 @@ int main()
 	g1.plot_xy(xi,yi_d,"interpolating derivative 2d");
 	g1.plot_xy(xi,yi_dd,"interpolating second derivative 2d");
 	g1.plot_xy(xi,yi_integral, "interpolating integral 2d");
+
+	int a;
+	std::cin>>a;
 
 	return 0;
 

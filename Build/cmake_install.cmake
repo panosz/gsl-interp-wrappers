@@ -1,4 +1,4 @@
-# Install script for directory: /Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D
+# Install script for directory: /Users/panos/Documents/programming/Interpolation1D
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -27,6 +27,52 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
+if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "dev" OR NOT CMAKE_INSTALL_COMPONENT)
+  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+   "/usr/local/lib/CMake/Interpolation1D/Interpolation1DConfig.cmake;/usr/local/lib/CMake/Interpolation1D/Interpolation1DConfigVersion.cmake")
+  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+file(INSTALL DESTINATION "/usr/local/lib/CMake/Interpolation1D" TYPE FILE FILES
+    "/Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/Interpolation1DConfig.cmake"
+    "/Users/panos/Documents/programming/Interpolation1D/Build/Interpolation1DConfigVersion.cmake"
+    )
+endif()
+
+if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "dev" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(EXISTS "$ENV{DESTDIR}/usr/local/lib/CMake/Interpolation1D/Interpolation1DTargets.cmake")
+    file(DIFFERENT EXPORT_FILE_CHANGED FILES
+         "$ENV{DESTDIR}/usr/local/lib/CMake/Interpolation1D/Interpolation1DTargets.cmake"
+         "/Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/Export/_usr/local/lib/CMake/Interpolation1D/Interpolation1DTargets.cmake")
+    if(EXPORT_FILE_CHANGED)
+      file(GLOB OLD_CONFIG_FILES "$ENV{DESTDIR}/usr/local/lib/CMake/Interpolation1D/Interpolation1DTargets-*.cmake")
+      if(OLD_CONFIG_FILES)
+        message(STATUS "Old export file \"$ENV{DESTDIR}/usr/local/lib/CMake/Interpolation1D/Interpolation1DTargets.cmake\" will be replaced.  Removing files [${OLD_CONFIG_FILES}].")
+        file(REMOVE ${OLD_CONFIG_FILES})
+      endif()
+    endif()
+  endif()
+  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+   "/usr/local/lib/CMake/Interpolation1D/Interpolation1DTargets.cmake")
+  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+file(INSTALL DESTINATION "/usr/local/lib/CMake/Interpolation1D" TYPE FILE FILES "/Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/Export/_usr/local/lib/CMake/Interpolation1D/Interpolation1DTargets.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for each subdirectory.
+  include("/Users/panos/Documents/programming/Interpolation1D/Build/tests/cmake_install.cmake")
+  include("/Users/panos/Documents/programming/Interpolation1D/Build/Interpolation1D/cmake_install.cmake")
+
+endif()
+
 if(CMAKE_INSTALL_COMPONENT)
   set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
 else()
@@ -35,5 +81,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/panos/Documents/programming/mirrors/aug_programming/cgal/equilibrium_project.git/cgal_read_equilibrium/Interpolation1D/Build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/panos/Documents/programming/Interpolation1D/Build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

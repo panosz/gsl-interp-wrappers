@@ -1,48 +1,121 @@
-# Created by the script cgal_create_CMakeLists
-# This is the CMake script for compiling a set of CGAL applications.
-
-project( InterpolationTest CXX )
+cmake_minimum_required (VERSION 3.2)
+project (Interpolation1D)
 
 
-cmake_minimum_required(VERSION 2.8.11)
+# The version number.
+set (Interpolation1D_VERSION_MAJOR 1)
+set (Interpolation1D_VERSION_MINOR 0)
+set (Interpolation1D_PATCH_VERSION 0)
 
 
 
-# Boost and its components
-find_package( Boost REQUIRED )
+#configure version number
+set(Interpolation1D_VERSION
+  ${Interpolation1D_MAJOR_VERSION}.${Interpolation1D_MINOR_VERSION}.${Interpolation1D_PATCH_VERSION})
 
-if ( NOT Boost_FOUND )
+#set rpath for MacOs
+if (APPLE)
+  set(CMAKE_MACOSX_RPATH 1)
+  link_directories(/opt/local/lib)
+endif(APPLE)
 
-  message(STATUS "This project requires the Boost library, and will not be compiled.")
+if(APPLE)
+  include_directories(/opt/local/include)
+endif(APPLE)
 
-  return()  
 
+set(CMAKE_CXX_STANDARD 14) # C++11...
+set(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
+set(CMAKE_CXX_FLAGS "-O3 -march=native")
+
+# Offer the user the choice of overriding the googlemock directory
+set(GOOGLEMOCK_DIR $ENV{GMOCK_DIR} CACHE PATH "googlemock directory")
+
+# Offer the user the choice of overriding the installation directories
+set(INSTALL_LIB_DIR lib CACHE PATH "Installation directory for libraries")
+set(INSTALL_BIN_DIR bin CACHE PATH "Installation directory for executables")
+set(INSTALL_INCLUDE_DIR include CACHE PATH
+  "Installation directory for header files")
+
+if(WIN32 AND NOT CYGWIN)
+  set(DEF_INSTALL_CMAKE_DIR CMake)
+else()
+  set(DEF_INSTALL_CMAKE_DIR lib/CMake/Interpolation1D)
+endif()
+set(INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
+  "Installation directory for CMake files")
+
+# Make relative paths absolute (needed later on)
+foreach(p LIB BIN INCLUDE CMAKE)
+  set(var INSTALL_${p}_DIR)
+  if(NOT IS_ABSOLUTE "${${var}}")
+    set(${var} "${CMAKE_INSTALL_PREFIX}/${${var}}")
+  endif()
+endforeach()
+
+
+# add the binary tree to the search path for include files
+# so that we will find Interpolation1DConfig.h
+include_directories(
+  "${PROJECT_BINARY_DIR}"
+  "${PROJECT_SOURCE_DIR}"
+  "${PROJECT_SOURCE_DIR}/Interpolation1D")
+
+include_directories("$ENV{HOME}/include")
+
+
+
+# The interesting stuff goes here
+# ===============================
+
+# add the project subdirectories
+#
+
+#include_directories($ENV{GMOCK_DIR}/include $ENV{GTEST_DIR}/include)
+#add_subdirectory("${PROJECT_SOURCE_DIR}/tests/googlemock" EXCLUDE_FROM_ALL)
+
+add_subdirectory(tests)
+add_subdirectory(Interpolation1D)
+
+export(TARGETS Interpolation1D
+  FILE "${PROJECT_BINARY_DIR}/Interpolation1DTargets.cmake")
+
+# Export the package for use from the build-tree
+# (this registers the build-tree with a global CMake-registry)
+export(PACKAGE Interpolation1D)
+
+# Create the Interpolation1DConfig.cmake and Interpolation1DConfigVersion files
+file(RELATIVE_PATH REL_INCLUDE_DIR "${INSTALL_CMAKE_DIR}"
+   "${INSTALL_INCLUDE_DIR}")
+# ... for the build tree
+set(CONF_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}" "${PROJECT_BINARY_DIR}")
+configure_file(Interpolation1DConfig.cmake.in
+  "${PROJECT_BINARY_DIR}/Interpolation1DConfig.cmake" @ONLY)
+# ... for the install tree
+set(CONF_INCLUDE_DIRS "\${TUTORIAL_CMAKE_DIR}/${REL_INCLUDE_DIR}")
+configure_file(Interpolation1DConfig.cmake.in
+  "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/Interpolation1DConfig.cmake" @ONLY)
+# ... for both
+configure_file(Interpolation1DConfigVersion.cmake.in
+  "${PROJECT_BINARY_DIR}/Interpolation1DConfigVersion.cmake" @ONLY)
+
+
+# Install the Interpolation1DConfig.cmake and Interpolation1DConfigVersion.cmake
+install(FILES
+  "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/Interpolation1DConfig.cmake"
+  "${PROJECT_BINARY_DIR}/Interpolation1DConfigVersion.cmake"
+  DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
+
+if(UNIX AND NOT APPLE)
+link_directories($ENV{HOME}/lib)
 endif()
 
-find_package(Boost COMPONENTS program_options REQUIRED)
+# Install the export set for use with the install-tree
+install(EXPORT Interpolation1DTargets DESTINATION
+  "${INSTALL_CMAKE_DIR}" COMPONENT dev)
 
-SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14 -frounding-math" )
+# add the install targets
+#install (TARGETS Interpolation1D DESTINATION ${INSTALL_BIN_DIR})
 
-
-# GSL and its components
-
-SET(GSL_LINK_FLAGS "-L$ENV{GSL_LIBDIR} -lgsl -lgslcblas") #use the GSL cblas library
-SET(GSL_INCLUDE_FLAGS "-I$ENV{GSL_HOME}/include") 
-
-SET( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GSL_INCLUDE_FLAGS} ${GSL_LINK_FLAGS}" )
-
-include_directories(${CMAKE_SOURCE_DIR} )
-#include for boost
-include_directories(${Boost_INCLUDE_DIRS})
-SET(CMAKE_POSITION_INDEPENDENT_CODE 1)
-            
- 
-# Creating entries for all C++ files with "main" routine
-# ##########################################################
-#( CGAL_CreateSingleSourceCGALProgram )
-
-add_executable(Interpolant1D_test "Interpolant1D_test.cpp")
-target_link_libraries(Interpolant1D_test ${Boost_LIBRARIES} )
-
-
-
+#install (FILES "${PROJECT_BINARY_DIR}/Interpolation1DConfig.h"
+ # DESTINATION ${INSTALL_INCLUDE_DIR})

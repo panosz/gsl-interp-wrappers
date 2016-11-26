@@ -124,14 +124,14 @@ install/local/fast: install/local
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /Users/panos/Documents/programming/Interpolation1D/Build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles /Users/panos/Documents/programming/Interpolation1D/Build/Interpolation1D/CMakeFiles/progress.marks
+	cd /Users/panos/Documents/programming/Interpolation1D/Build && $(MAKE) -f CMakeFiles/Makefile2 Interpolation1D/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/panos/Documents/programming/Interpolation1D/Build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /Users/panos/Documents/programming/Interpolation1D/Build && $(MAKE) -f CMakeFiles/Makefile2 Interpolation1D/clean
 .PHONY : clean
 
 # The main clean target
@@ -141,83 +141,18 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/panos/Documents/programming/Interpolation1D/Build && $(MAKE) -f CMakeFiles/Makefile2 Interpolation1D/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/panos/Documents/programming/Interpolation1D/Build && $(MAKE) -f CMakeFiles/Makefile2 Interpolation1D/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/panos/Documents/programming/Interpolation1D/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-#=============================================================================
-# Target rules for targets named Interpolant1DTest
-
-# Build rule for target.
-Interpolant1DTest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Interpolant1DTest
-.PHONY : Interpolant1DTest
-
-# fast build rule for target.
-Interpolant1DTest/fast:
-	$(MAKE) -f tests/CMakeFiles/Interpolant1DTest.dir/build.make tests/CMakeFiles/Interpolant1DTest.dir/build
-.PHONY : Interpolant1DTest/fast
-
-#=============================================================================
-# Target rules for targets named gmock_main
-
-# Build rule for target.
-gmock_main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gmock_main
-.PHONY : gmock_main
-
-# fast build rule for target.
-gmock_main/fast:
-	$(MAKE) -f /Users/panos/Documents/programming/googletest-master/googlemock_Build_dir/googlemock/CMakeFiles/gmock_main.dir/build.make /Users/panos/Documents/programming/googletest-master/googlemock_Build_dir/googlemock/CMakeFiles/gmock_main.dir/build
-.PHONY : gmock_main/fast
-
-#=============================================================================
-# Target rules for targets named gmock
-
-# Build rule for target.
-gmock: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gmock
-.PHONY : gmock
-
-# fast build rule for target.
-gmock/fast:
-	$(MAKE) -f /Users/panos/Documents/programming/googletest-master/googlemock_Build_dir/googlemock/CMakeFiles/gmock.dir/build.make /Users/panos/Documents/programming/googletest-master/googlemock_Build_dir/googlemock/CMakeFiles/gmock.dir/build
-.PHONY : gmock/fast
-
-#=============================================================================
-# Target rules for targets named gtest_main
-
-# Build rule for target.
-gtest_main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gtest_main
-.PHONY : gtest_main
-
-# fast build rule for target.
-gtest_main/fast:
-	$(MAKE) -f /Users/panos/Documents/programming/googletest-master/googlemock_Build_dir/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make /Users/panos/Documents/programming/googletest-master/googlemock_Build_dir/googlemock/gtest/CMakeFiles/gtest_main.dir/build
-.PHONY : gtest_main/fast
-
-#=============================================================================
-# Target rules for targets named gtest
-
-# Build rule for target.
-gtest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gtest
-.PHONY : gtest
-
-# fast build rule for target.
-gtest/fast:
-	$(MAKE) -f /Users/panos/Documents/programming/googletest-master/googlemock_Build_dir/googlemock/gtest/CMakeFiles/gtest.dir/build.make /Users/panos/Documents/programming/googletest-master/googlemock_Build_dir/googlemock/gtest/CMakeFiles/gtest.dir/build
-.PHONY : gtest/fast
 
 # Help Target
 help:
@@ -231,11 +166,6 @@ help:
 	@echo "... install"
 	@echo "... install/strip"
 	@echo "... install/local"
-	@echo "... Interpolant1DTest"
-	@echo "... gmock_main"
-	@echo "... gmock"
-	@echo "... gtest_main"
-	@echo "... gtest"
 .PHONY : help
 
 
@@ -247,6 +177,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/panos/Documents/programming/Interpolation1D/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
