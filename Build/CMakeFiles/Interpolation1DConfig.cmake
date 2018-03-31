@@ -6,7 +6,7 @@
 
 # Compute paths
 get_filename_component(POLYNOMIALFIT_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
-set(POLYNOMIALFIT_INCLUDE_DIRS "${TUTORIAL_CMAKE_DIR}/../../../include")
+set(POLYNOMIALFIT_INCLUDE_DIRS "/usr/local/include")
 
 # Our library dependencies (contains definitions for IMPORTED targets)
 if(NOT TARGET PolynomialFit AND NOT PolynomialFit_BINARY_DIR)

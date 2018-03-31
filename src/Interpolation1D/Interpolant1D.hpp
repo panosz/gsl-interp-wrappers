@@ -12,10 +12,8 @@
 #include <map>
 #include <vector>
 #include <assert.h>
-#include <gsl/gsl_errno.h>
-#include <gsl/gsl_math.h>
-#include <gsl/gsl_interp.h>
-#include <gsl/gsl_spline.h>
+#include "gsl_wrappers.hpp"
+
 #include <algorithm>
 #include <utility>
 #include <cmath>

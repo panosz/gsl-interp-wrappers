@@ -14,7 +14,7 @@ add_subdirectory(
 include_directories(${GOOGLEMOCK_DIR}/googlemock/include
 ${GOOGLEMOCK_DIR}/googletest/include)
 
-add_executable(Interpolant1DTest Interpolant1DTest.cpp)
+add_executable(Interpolant1DTest Interpolant1DTestUnofficial.cpp)
 
 
 target_link_libraries(Interpolant1DTest gmock Interpolation1D)

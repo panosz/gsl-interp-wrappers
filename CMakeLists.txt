@@ -61,7 +61,6 @@ include_directories(
   "${PROJECT_SOURCE_DIR}"
   "${PROJECT_SOURCE_DIR}/Interpolation1D")
 
-include_directories("$ENV{HOME}/include")
 
 
 
@@ -70,52 +69,45 @@ include_directories("$ENV{HOME}/include")
 
 # add the project subdirectories
 #
+message(STATUS "INSTAL INCLUDE DIR ${INSTALL_INCLUDE_DIR}")
+message(STATUS "Project Source Dir ${PROJECT_SOURCE_DIR}")
 
-#include_directories($ENV{GMOCK_DIR}/include $ENV{GTEST_DIR}/include)
-#add_subdirectory("${PROJECT_SOURCE_DIR}/tests/googlemock" EXCLUDE_FROM_ALL)
+add_subdirectory(${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME})
+add_subdirectory(${PROJECT_SOURCE_DIR}/src/tests)
 
-add_subdirectory(tests)
-add_subdirectory(Interpolation1D)
-
-export(TARGETS Interpolation1D
-  FILE "${PROJECT_BINARY_DIR}/Interpolation1DTargets.cmake")
+export(TARGETS ${PROJECT_TARGETS}
+        FILE "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Targets.cmake")
 
 # Export the package for use from the build-tree
 # (this registers the build-tree with a global CMake-registry)
-export(PACKAGE Interpolation1D)
+export(PACKAGE ${PROJECT_NAME})
 
-# Create the Interpolation1DConfig.cmake and Interpolation1DConfigVersion files
+# Create the ${PROJECT_NAME}Config.cmake and ${PROJECT_NAME}ConfigVersion files
 file(RELATIVE_PATH REL_INCLUDE_DIR "${INSTALL_CMAKE_DIR}"
-   "${INSTALL_INCLUDE_DIR}")
+        "${INSTALL_INCLUDE_DIR}")
 # ... for the build tree
 set(CONF_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}" "${PROJECT_BINARY_DIR}")
-configure_file(Interpolation1DConfig.cmake.in
-  "${PROJECT_BINARY_DIR}/Interpolation1DConfig.cmake" @ONLY)
+configure_file(${PROJECT_NAME}Config.cmake.in
+        "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake" @ONLY)
 # ... for the install tree
-set(CONF_INCLUDE_DIRS "\${TUTORIAL_CMAKE_DIR}/${REL_INCLUDE_DIR}")
-configure_file(Interpolation1DConfig.cmake.in
-  "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/Interpolation1DConfig.cmake" @ONLY)
+set(CONF_INCLUDE_DIRS "${INSTALL_INCLUDE_DIR}")
+configure_file(${PROJECT_NAME}Config.cmake.in
+        "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}Config.cmake" @ONLY)
 # ... for both
-configure_file(Interpolation1DConfigVersion.cmake.in
-  "${PROJECT_BINARY_DIR}/Interpolation1DConfigVersion.cmake" @ONLY)
+configure_file(${PROJECT_NAME}ConfigVersion.cmake.in
+        "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake" @ONLY)
 
 
-# Install the Interpolation1DConfig.cmake and Interpolation1DConfigVersion.cmake
+# Install the ${PROJECT_NAME}Config.cmake and ${PROJECT_NAME}ConfigVersion.cmake
 install(FILES
-  "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/Interpolation1DConfig.cmake"
-  "${PROJECT_BINARY_DIR}/Interpolation1DConfigVersion.cmake"
-  DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
+        "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}Config.cmake"
+        "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+        DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
 
 if(UNIX AND NOT APPLE)
-link_directories($ENV{HOME}/lib)
+  link_directories($ENV{HOME}/lib)
 endif()
 
 # Install the export set for use with the install-tree
-install(EXPORT Interpolation1DTargets DESTINATION
-  "${INSTALL_CMAKE_DIR}" COMPONENT dev)
-
-# add the install targets
-#install (TARGETS Interpolation1D DESTINATION ${INSTALL_BIN_DIR})
-
-#install (FILES "${PROJECT_BINARY_DIR}/Interpolation1DConfig.h"
- # DESTINATION ${INSTALL_INCLUDE_DIR})
+install(EXPORT ${PROJECT_NAME}Targets DESTINATION
+        "${INSTALL_CMAKE_DIR}" COMPONENT dev)
