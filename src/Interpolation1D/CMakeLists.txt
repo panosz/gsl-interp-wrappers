@@ -1,5 +1,5 @@
 
-add_library(Interpolation1D INTERFACE)
+add_library(Interpolation1D SHARED Interpolant1D.hpp Interpolant1D.cpp gsl_wrappers.hpp gsl_wrappers.cpp)
 
 set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};$ENV{HOME};/opt/intel/")
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};$ENV{HOME}/lib/CMake/Modules")
@@ -22,18 +22,28 @@ target_include_directories(
   Interpolation1D INTERFACE ${GSL_INCLUDES})
 
 
-target_link_libraries(Interpolation1D INTERFACE ${GSL_LIBRARIES} ${BLAS_LIBRARIES})
+target_link_libraries(Interpolation1D  ${GSL_LIBRARIES} ${BLAS_LIBRARIES})
 
 
+#
+#target_sources(
+#  Interpolation1D INTERFACE
+#  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Interpolant1D.hpp>
+#  $<INSTALL_INTERFACE:include/Interpolant1D.hpp>
+#  )
 
-target_sources(
-  Interpolation1D INTERFACE
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Interpolant1D.hpp>
-  $<INSTALL_INTERFACE:include/Interpolant1D.hpp>
-  )
+target_include_directories(
+        ${PROJECT_NAME} INTERFACE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
+)
+
 
 install (
-  TARGETS Interpolation1D EXPORT Interpolation1DTargets)
+  TARGETS Interpolation1D EXPORT Interpolation1DTargets
+        ARCHIVE  DESTINATION lib
+        LIBRARY  DESTINATION lib)
+
 
 install(
   FILES ${CMAKE_CURRENT_SOURCE_DIR}/Interpolant1D.hpp

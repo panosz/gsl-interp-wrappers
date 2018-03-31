@@ -30,12 +30,14 @@ set(CMAKE_CXX_FLAGS "-O3 -march=native")
 
 # Offer the user the choice of overriding the googlemock directory
 set(GOOGLEMOCK_DIR $ENV{GMOCK_DIR} CACHE PATH "googlemock directory")
+set(GOOGLETEST_DIR $ENV{GTEST_DIR} CACHE PATH "googletest directory")
 
 # Offer the user the choice of overriding the installation directories
 set(INSTALL_LIB_DIR lib CACHE PATH "Installation directory for libraries")
 set(INSTALL_BIN_DIR bin CACHE PATH "Installation directory for executables")
 set(INSTALL_INCLUDE_DIR include CACHE PATH
-  "Installation directory for header files")
+        "Installation directory for header files")
+
 
 if(WIN32 AND NOT CYGWIN)
   set(DEF_INSTALL_CMAKE_DIR CMake)

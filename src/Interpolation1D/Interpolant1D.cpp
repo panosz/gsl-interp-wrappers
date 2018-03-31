@@ -5,7 +5,7 @@
  *      Author: panosz
  */
 
-#include "Interpolant1D.h"
+#include "Interpolant1D.hpp"
 
 //namespace Panos_1DInterp {
 //
