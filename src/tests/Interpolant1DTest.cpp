@@ -24,7 +24,8 @@ namespace InterpTest
       std::cout << "minimum sample size for Akima periodic " << min_samples<AkimaPeriodicInterpolation>() << '\n';
 
       std::cout << "minimum sample size for Steffen's " << min_samples<SteffenInterpolation>() << '\n';
-      ASSERT_ANY_THROW((Interpolator<xa.size(), SteffenInterpolation>{xa, ya}));
+      ASSERT_ANY_THROW((SplineInterpolator<xa.size(), SteffenInterpolation>{xa, ya}));
+      ASSERT_ANY_THROW((LowLevelInterpolator<xa.size(),AkimaInterpolation>{xa,ya}));
     }
 
     TEST(InterpolationEvaluation, OutputIsNaNWhenOutsideTheDomain)
@@ -36,13 +37,14 @@ namespace InterpTest
           ya[i] = i + cos(i * i);
         }
 
-      auto linInterp = Interpolator<xa.size(), LinearInterpolation>(xa, ya);
-      auto akimaPeriodicInterp = Interpolator<xa.size(), AkimaPeriodicInterpolation>(xa, ya);
+      auto linInterp = LowLevelInterpolator<xa.size(), LinearInterpolation>(xa, ya);
+      auto akimaPeriodicInterp = SplineInterpolator<xa.size(), AkimaPeriodicInterpolation>(xa, ya);
 
       auto x = -10;
 
-      std::cout << '\n' << linInterp.name() << '\n';
-      std::cout << akimaPeriodicInterp.name() << '\n';
+
+      std::cout << '\n' << linInterp.name() <<" "<< linInterp.eval(3).result<< '\n';
+      std::cout << akimaPeriodicInterp.name() <<" "<< akimaPeriodicInterp.eval(3).result<< '\n';
 
       //assert linear
       {

@@ -25,12 +25,35 @@ namespace GSL_Interp
         DomainLocate error=DomainLocate::INSIDE_DOMAIN;
     };
 
-    class SplineBase {
+
+    class InterpolationBase
+    {
+
+     public:
+
+
+      virtual ReturnType eval(double) const noexcept =0;
+      virtual ReturnType eval_deriv(double) const noexcept =0;
+      virtual ReturnType eval_deriv2(double) const noexcept =0;
+      virtual ReturnType eval_integ(double,double) const noexcept =0;
+      virtual unsigned int min_size() const  noexcept =0 ;
+
+      virtual std::string name() const =0;
+
+      virtual ~InterpolationBase ();
+
+    };
+
+    class SplineBase: public InterpolationBase
+
+    {
      private:
       gsl_spline *spline_;
-      gsl_interp_accel *acc_;
+      mutable gsl_interp_accel *acc_;
 
-      ReturnType general_spline_eval(double, int (*)(const gsl_spline *, double, gsl_interp_accel* , double *));
+
+
+      ReturnType general_spline_eval(double, int (*)(const gsl_spline *, double, gsl_interp_accel* , double *)) const noexcept ;
 
      protected:
       SplineBase (const gsl_interp_type *T, const double xa[], const double ya[], size_t size);
@@ -39,31 +62,60 @@ namespace GSL_Interp
 
 
 
-      ReturnType eval(double);
-      ReturnType eval_deriv(double);
-      ReturnType eval_deriv2(double);
-      ReturnType eval_integ(double,double);
+      ReturnType eval(double) const noexcept override final ;
+      ReturnType eval_deriv(double) const noexcept override final ;
+      ReturnType eval_deriv2(double) const noexcept override final ;
+      ReturnType eval_integ(double,double) const noexcept override final ;
 
-      unsigned int min_size();
+      unsigned int min_size() const noexcept override final;
 
-      std::string name() const;
+      std::string name() const override;
 
       virtual ~SplineBase ();
 
     };
 
-//    class InterpolationMethodBase
-//    {
-//     public:
-//      const gsl_interp_type *method;
-//      InterpolationMethodBase (const gsl_interp_type *method);
-//    };
 
 
-    //Linear interpolation.
-    //==========================================
-    // This interpolation method does not require
-    // any additional memory.
+    class LowLevelInterpBase : public InterpolationBase
+    /// Unlike SplineBase, this class does not store the interpolation data. It only stores the state computed from the data
+    /// and references to it
+    {
+     private:
+      mutable gsl_interp_accel *acc_;
+      gsl_interp *interp_;
+      const double *xa_; //not owning
+      const double *ya_; //not owning
+
+      ReturnType general_interp_eval(double, int (*)
+          (const gsl_interp *, const double[], const double[], double, gsl_interp_accel *, double *)) const noexcept ;
+
+     protected:
+      LowLevelInterpBase (const gsl_interp_type *T, const double xa[], const double ya[], size_t size);
+
+     public:
+
+      ReturnType eval(double) const noexcept  final ;
+      ReturnType eval_deriv(double) const noexcept  final;
+      ReturnType eval_deriv2(double) const noexcept  final ;
+      ReturnType eval_integ(double,double) const noexcept  final;
+
+      std::string name() const override;
+      unsigned int min_size() const noexcept final;
+
+      virtual ~LowLevelInterpBase();
+
+    };
+
+
+
+
+
+
+    ///Linear interpolation.
+    ///==========================================
+    /// This interpolation method does not require
+    /// any additional memory.
     class LinearInterpolation
     {
      public:
@@ -150,18 +202,30 @@ namespace GSL_Interp
       return gsl_interp_type_min_size(Method::method());
     }
 
+
     template <int N,typename Method=LinearInterpolation>
     class
-    Interpolator : public SplineBase
-      //Linear interpolation. This interpolation method does not require any additional memory.
-
+    SplineInterpolator : public SplineBase
     {
-      //const static unsigned min_size_ = gsl
      public:
 
 
-      Interpolator(std::array<double,N>xa,std::array<double,N>ya):
+      SplineInterpolator(const std::array<double,N> &xa,const std::array<double,N>& ya):
           SplineBase(Method::method(),xa.data(),ya.data(),N)
+      // xa is assumed to be sorted. If otherwise, the behaviour is undefined.
+      {}
+    };
+
+    template <int N,typename Method=LinearInterpolation>
+    class
+    LowLevelInterpolator : public LowLevelInterpBase
+    /// Unlike SplineInterpolator, the input data are not stored. The user is required to keep valid references to it.
+    {
+     public:
+
+
+      LowLevelInterpolator(const std::array<double,N> &xa,const std::array<double,N>& ya):
+          LowLevelInterpBase(Method::method(),xa.data(),ya.data(),N)
       // xa is assumed to be sorted. If otherwise, the behaviour is undefined.
       {}
     };
