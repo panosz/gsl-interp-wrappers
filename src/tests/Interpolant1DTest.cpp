@@ -7,148 +7,60 @@ using namespace testing;
 namespace InterpTest
 {
 
-    TEST(AnullTest,fails)
+    TEST(InterpolationInstantiation, throwsWhenInitializedWithTooFewSamples)
     {
-
-      std::array<double,10> xa, ya;
-
-      for (auto i=0;i<10;++i)
+      std::array<double, 2> xa{}, ya{};
+      for (auto i = 0; i < xa.size(); ++i)
         {
-          xa[i] = i + 0.5 * sin (i);
-          ya[i] = i + cos (i * i);
+          xa[i] = i + 0.5 * sin(i);
+          ya[i] = i + cos(i * i);
         }
 
-      auto interp = Interpolator<xa.size(),LinearInterpolation>(xa,ya);
+      std::cout << "minimum sample size for Linear " << min_samples<LinearInterpolation>() << '\n';
+      std::cout << "minimum sample size for cspline " << min_samples<CSplineInterpolation>() << '\n';
+      std::cout << "minimum sample size for cspline periodic " << min_samples<CSplinePeriodicInterpolation>() << '\n';
+      std::cout << "minimum sample size for Akima " << min_samples<AkimaInterpolation>() << '\n';
 
-      std::cout<<(interp.eval(2.1).result)<<std::endl;
-          ASSERT_TRUE(false);
+      std::cout << "minimum sample size for Akima periodic " << min_samples<AkimaPeriodicInterpolation>() << '\n';
 
+      std::cout << "minimum sample size for Steffen's " << min_samples<SteffenInterpolation>() << '\n';
+      ASSERT_ANY_THROW((Interpolator<xa.size(), SteffenInterpolation>{xa, ya}));
     }
 
-//
-//    TEST(points2MeshSurfaceFunction,throwsWhenInputPointsAreLessThanThree)
-//    {
-//      vec::fixed<3> p1{0,1,2},p2{3,2,4};
-//      std::vector<vec::fixed<3>> points{p1,p2};
-//
-//      ASSERT_THROW(points2MeshSurface(points.begin(),points.end()),std::length_error);
-//
-//
-//    }
-//
-//
-//    class APyramidContour : public Test
-//    {
-//     public:
-//      const double pyramid_height=5;
-//      const double height=pyramid_height/2;
-//
-//      std::vector<vec::fixed<3>> points{
-//          {0,0,0},
-//          {0,1,0},
-//          {1,0,0},
-//          {1,1,0},
-//          {0.5,0.5,pyramid_height}
-//      };
-//      //SurfaceContour sc;
-//      void SetUp() override
-//      {
-//
-//
-//      };
-//
-//    };
-//
-//
-//
-//
-//    TEST_F(APyramidContour, MeshReturnedIsValid)
-//    {
-//      auto dt=triangulate_terrain(points.begin(),points.end());
-//
-//
-//      auto m= points2MeshSurface(points.begin(), points.end());
-//
-//      auto mesh_is_valid =m.is_valid();
-//      ASSERT_TRUE(mesh_is_valid);
-//      auto number_of_facets = m.number_of_faces();
-//      ASSERT_EQ(number_of_facets,4);
-//    }
-//
-//
-//
-//
-//
-//
-//    TEST_F(APyramidContour,FullPyramidCrossectionIsClosedPolygonWithFourSides)
-//    {
-//
-//      auto sc2=SurfaceContour::builder().build(points.begin(),points.end());
-//
-//      auto contours=sc2->iso_lines_at_height(height);
-//
-//      ASSERT_EQ((contours.size()),1);
-//      auto contour_line =contours.front();
-//      ASSERT_EQ((contour_line.size()),5);
-//      auto line_is_closed=(contour_line.front()==contour_line.back());
-//      ASSERT_TRUE(line_is_closed);
-//
-//
-//    }
-//
-//    TEST_F(APyramidContour,DoublePyramidCrossectionIsTwoPolygons)
-//    {
-//
-//
-//      //append a 2nd pyramidal surface at points vector
-//
-//
-//      auto translate_point = [&](const vec::fixed<3> p){return p+ vec::fixed<3>{5,0,0};};
-//
-//      decltype(points) translated_points;
-//
-//      std::transform(points.begin(),points.end(),std::back_inserter(translated_points),translate_point);
-//
-//      //append translated_points to points.
-//      //note: skipping this step by instructing std::transform to insert the results at the end of points looks and probably
-//      //is dangerous, because of iterator invalidation due to reallocation. Better be safe than strive for optimum performance
-//      //when testing.
-//      std::copy(translated_points.begin(),translated_points.end(),std::back_inserter(points));
-//
-//      std::cout<<"points \n";
-//      for (const auto p: translated_points)
-//        {
-//          for (const auto pp: p)
-//            std::cout << pp << ' ';
-//          std::cout << '\n';
-//        }
-//
-//
-//      auto sc2=SurfaceContour::builder().build(points.begin(),points.end());
-//
-//      auto contours=sc2->iso_lines_at_height(height);
-//
-//      ASSERT_EQ((contours.size()),2);
-//
-//      {
-//        auto first_contour_line = contours.front();
-//        ASSERT_EQ((first_contour_line.size()), 5);
-//        auto first_line_is_closed = (first_contour_line.front() == first_contour_line.back());
-//        ASSERT_TRUE(first_line_is_closed);
-//      }
-//
-//      {
-//        auto second_contour_line = contours.back();
-//        ASSERT_EQ((second_contour_line.size()), 5);
-//        auto second_line_is_closed = (second_contour_line.front() == second_contour_line.back());
-//        ASSERT_TRUE(second_line_is_closed);
-//      }
-//    }
-//
+    TEST(InterpolationEvaluation, OutputIsNaNWhenOutsideTheDomain)
+    {
+      std::array<double, 10> xa{}, ya{};
+      for (auto i = 0; i < xa.size(); ++i)
+        {
+          xa[i] = i + 0.5 * sin(i);
+          ya[i] = i + cos(i * i);
+        }
 
+      auto linInterp = Interpolator<xa.size(), LinearInterpolation>(xa, ya);
+      auto akimaPeriodicInterp = Interpolator<xa.size(), AkimaPeriodicInterpolation>(xa, ya);
+
+      auto x = -10;
+
+      std::cout << '\n' << linInterp.name() << '\n';
+      std::cout << akimaPeriodicInterp.name() << '\n';
+
+      //assert linear
+      {
+        auto reslin = linInterp.eval_deriv(x);
+
+        ASSERT_TRUE(std::isnan(reslin.result));
+        ASSERT_EQ(reslin.error, DomainLocate::OUTSIDE_DOMAIN);
+      }
+
+      //assert akima periodic
+      {
+        auto resak = akimaPeriodicInterp.eval(x);
+        ASSERT_TRUE(std::isnan(resak.result));
+        ASSERT_EQ(resak.error, DomainLocate::OUTSIDE_DOMAIN);
+      }
+
+    }
 }
-
-
 
 
 int main (int argc, char **argv)

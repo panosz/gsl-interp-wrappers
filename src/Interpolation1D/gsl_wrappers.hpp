@@ -15,12 +15,6 @@
 namespace GSL_Interp
 {
 
-    class InterpType {
-     private:
-      gsl_interp_type *interp_type_;
-
-    };
-
 
     enum class DomainLocate{
       OUTSIDE_DOMAIN=GSL_EDOM,
@@ -49,6 +43,10 @@ namespace GSL_Interp
       ReturnType eval_deriv(double);
       ReturnType eval_deriv2(double);
       ReturnType eval_integ(double,double);
+
+      unsigned int min_size();
+
+      std::string name() const;
 
       virtual ~SplineBase ();
 
@@ -127,15 +125,30 @@ namespace GSL_Interp
       const static gsl_interp_type *method()
       {return gsl_interp_akima_periodic;}
     };
-//    gsl_interp_steffen
-//        //Steffen’s method guarantees the monotonicity of the interpolating function between the given data points. Therefore, minima and maxima can only occur exactly at the data points, and there can never be spurious oscillations between data points. The interpolated function is piecewise cubic in each interval. The resulting curve and its first derivative are guaranteed to be continuous, but the second derivative may be discontinuous.
+
+    //Steffen's method
+    //==========================================
+    // Steffen’s method guarantees the monotonicity of the interpolating
+    // function between the given data points. Therefore, minima
+    // and maxima can only occur exactly at the data points, and there
+    // can never be spurious oscillations between data points. The
+    // interpolated function is piecewise cubic in each interval. The
+    // resulting curve and its first derivative are guaranteed to be continuous,
+    // but the second derivative may be discontinuous.
 
     class SteffenInterpolation
     {
+     public:
       const static gsl_interp_type *method()
       {return gsl_interp_steffen;}
 
     };
+
+    template <typename Method>
+    unsigned min_samples()
+    {
+      return gsl_interp_type_min_size(Method::method());
+    }
 
     template <int N,typename Method=LinearInterpolation>
     class
@@ -145,8 +158,11 @@ namespace GSL_Interp
     {
       //const static unsigned min_size_ = gsl
      public:
+
+
       Interpolator(std::array<double,N>xa,std::array<double,N>ya):
           SplineBase(Method::method(),xa.data(),ya.data(),N)
+      // xa is assumed to be sorted. If otherwise, the behaviour is undefined.
       {}
     };
 }
