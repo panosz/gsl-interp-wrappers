@@ -1,50 +1,45 @@
 
-add_library(Interpolation1D SHARED Interpolant1D.hpp Interpolant1D.cpp gsl_wrappers.hpp gsl_wrappers.cpp)
+add_library(${PROJECT_NAME} SHARED
+        include/Interpolant1D.hpp
+        src/Interpolant1D.cpp
+        include/gsl_wrappers.hpp
+        src/gsl_wrappers.cpp)
+#
 
-set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};$ENV{HOME};/opt/intel/")
-set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};$ENV{HOME}/lib/CMake/Modules")
-
-#set(BLA_VENDOR "Intel10_64lp")
 find_package(BLAS REQUIRED)
 
-#set(GSL_ROOT_DIR $ENV{GSL_HOME})
-set(GSL_CBLAS_LIB  "${BLAS_LIBRARIES}" CACHE FILEPATH "jhg" )
-
-message(STATUS "${CMAKE_MODULE_PATH}")
 find_package(GSL REQUIRED)
-#find_package(MKL REQUIRED)
 message(STATUS "BLAS_LIBRARIES ${BLAS_LIBRARIES}")
-list(REMOVE_AT GSL_LIBRARIES 1)
 
-message(STATUS "GSL LIBRARIES ${GSL_LIBRARIES}")
+
+target_link_libraries(${PROJECT_NAME}  PUBLIC GSL::gsl PRIVATE ${BLAS_LIBRARIES})
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+
 
 target_include_directories(
-  Interpolation1D INTERFACE ${GSL_INCLUDES})
-
-
-target_link_libraries(Interpolation1D  ${GSL_LIBRARIES} ${BLAS_LIBRARIES})
-
-
-#
-#target_sources(
-#  Interpolation1D INTERFACE
-#  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Interpolant1D.hpp>
-#  $<INSTALL_INTERFACE:include/Interpolant1D.hpp>
-#  )
-
-target_include_directories(
-        ${PROJECT_NAME} INTERFACE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        ${PROJECT_NAME} PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
+        PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
+
 )
 
 
+
 install (
-  TARGETS Interpolation1D EXPORT Interpolation1DTargets
-        ARCHIVE  DESTINATION lib
-        LIBRARY  DESTINATION lib)
+  TARGETS ${PROJECT_NAME}
+        EXPORT ${PROJECT_NAME}Targets
+        ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
 
 
-install(
-  FILES ${CMAKE_CURRENT_SOURCE_DIR}/Interpolant1D.hpp
-  DESTINATION "${INSTALL_INCLUDE_DIR}/Interpolation1D")
+
+
+#
+#install(
+#  FILES ${CMAKE_CURRENT_SOURCE_DIR}/Interpolant1D.hpp
+#  DESTINATION "${INSTALL_INCLUDE_DIR}/${PROJECT_NAME}")

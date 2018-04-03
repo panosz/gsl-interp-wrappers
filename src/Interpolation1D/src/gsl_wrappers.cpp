@@ -114,6 +114,7 @@ ReturnType LowLevelInterpBase::eval_integ (double a, double b) const noexcept
   ReturnType ret;
   ret.error= static_cast<DomainLocate>
   (gsl_interp_eval_integ_e(interp_,xa_,ya_,a,b,acc_,&ret.result));
+  return ret;
 }
 std::string LowLevelInterpBase::name () const
 {
