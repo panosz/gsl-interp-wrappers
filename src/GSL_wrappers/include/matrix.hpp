@@ -23,7 +23,7 @@ namespace GSL_Wrappers
       virtual ~Matrix ();
       double & operator()(size_t i, size_t j);
       double get(size_t i, size_t j) const;
-      gsl_matrix * operator*();
+      const gsl_matrix * operator*() const;
       MatrixSize size() const;
 
       friend std::ostream& operator<<(std::ostream& os, const Matrix&);
@@ -38,7 +38,7 @@ namespace GSL_Wrappers
       virtual ~Vector ();
       double & operator()(size_t);
       double get(size_t) const;
-      gsl_vector * operator*();
+      const gsl_vector * operator*() const;
       size_t size() const;
 
       friend std::ostream& operator<<(std::ostream& os, const Vector&);

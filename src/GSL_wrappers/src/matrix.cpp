@@ -21,7 +21,7 @@ using namespace GSL_Wrappers;
     {
       return *gsl_matrix_ptr(mat_, i, j);
     }
-    gsl_matrix *GSL_Wrappers::Matrix::operator* ()
+     const gsl_matrix *GSL_Wrappers::Matrix::operator* () const
     {
       return mat_;
     }
@@ -50,7 +50,7 @@ using namespace GSL_Wrappers;
     {
       return *gsl_vector_ptr(vec_, i);
     }
-    gsl_vector *GSL_Wrappers::Vector::operator* ()
+    const gsl_vector *GSL_Wrappers::Vector::operator* () const
     {
       return vec_;
     }
