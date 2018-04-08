@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.2)
-project (Interpolation1D VERSION 0.2.0)
+project (GSL_wrappers VERSION 0.2.0)
 
 #set rpath for MacOs
 if (APPLE)

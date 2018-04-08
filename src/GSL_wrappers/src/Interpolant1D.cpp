@@ -1,9 +1,9 @@
 //
 // Created by Panagiotis Zestanakis on 30/03/18.
 //
-#include "gsl_wrappers.hpp"
+#include "Interpolant1D.hpp"
 #include <exception>
-using namespace GSL_Interp;
+using namespace GSL_Wrappers;
 
 ReturnType SplineBase::general_spline_eval(double x, int (*eval_fn)(const gsl_spline *, double, gsl_interp_accel* , double *)) const noexcept
 {
@@ -14,7 +14,7 @@ ReturnType SplineBase::general_spline_eval(double x, int (*eval_fn)(const gsl_sp
 
 
 
-ReturnType GSL_Interp::SplineBase::eval (double x) const noexcept
+ReturnType GSL_Wrappers::SplineBase::eval (double x) const noexcept
 {
   return general_spline_eval(x,gsl_spline_eval_e);
 }

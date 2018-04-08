@@ -5,8 +5,8 @@
   target_include_directories(gmock PUBLIC ${GOOGLETEST_DIR} ${GOOGLEMOCK_DIR}
           ${GOOGLETEST_DIR}/include ${GOOGLEMOCK_DIR}/include)
 
-  add_executable(Interpolant1DTest Interpolant1DTest.cpp)
+  add_executable(wrappersTest gsl_wrappersTest.cpp matrixTest.hpp interp1DTest.hpp)
 
-  target_link_libraries(Interpolant1DTest PUBLIC gmock ${PROJECT_NAME})
+  target_link_libraries(wrappersTest PUBLIC gmock ${PROJECT_NAME})
 
-  add_test(Interpolant1DTest Interpolant1DTest)
+  add_test(wrappersTest wrappersTest)

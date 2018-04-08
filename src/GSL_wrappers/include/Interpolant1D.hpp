@@ -4,6 +4,8 @@
 
 #ifndef INTERPOLATION1D_GSL_WRAPPERS_HPP
 #define INTERPOLATION1D_GSL_WRAPPERS_HPP
+
+
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_math.h>
 #include <gsl/gsl_interp.h>
@@ -12,7 +14,8 @@
 #include <cassert>
 
 
-namespace GSL_Interp
+
+namespace GSL_Wrappers
 {
 
 
@@ -78,8 +81,8 @@ namespace GSL_Interp
 
 
     class LowLevelInterpBase : public InterpolationBase
-    /// Unlike SplineBase, this class does not store the interpolation data. It only stores the state computed from the data
-    /// and references to it
+      /// Unlike SplineBase, this class does not store the interpolation data. It only stores the state computed from the data
+      /// and references to it
     {
      private:
       mutable gsl_interp_accel *acc_;
@@ -219,7 +222,7 @@ namespace GSL_Interp
     template <int N,typename Method=LinearInterpolation>
     class
     LowLevelInterpolator : public LowLevelInterpBase
-    /// Unlike SplineInterpolator, the input data are not stored. The user is required to keep valid references to it.
+      /// Unlike SplineInterpolator, the input data are not stored. The user is required to keep valid references to it.
     {
      public:
 
@@ -230,7 +233,4 @@ namespace GSL_Interp
       {}
     };
 }
-
-
-
 #endif //INTERPOLATION1D_GSL_WRAPPERS_HPP
