@@ -28,7 +28,7 @@ namespace GSL_Wrappers
       Matrix (size_t rows, size_t columns);
       double & operator()(size_t i, size_t j);
       double get(size_t i, size_t j) const;
-      const gsl_matrix * operator*() const noexcept ;
+      gsl_matrix * operator*() const noexcept ;
       MatrixSize size() const noexcept ;
       void swap(Matrix &) noexcept;
 
@@ -43,7 +43,7 @@ namespace GSL_Wrappers
       Vector (size_t);
       double & operator()(size_t);
       double get(size_t) const;
-      const gsl_vector * operator*() const noexcept ;
+      gsl_vector * operator*() const noexcept ;
       size_t size() const noexcept ;
       void swap(Vector& other) noexcept ;
 

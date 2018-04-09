@@ -20,7 +20,7 @@ double& GSL_Wrappers::Matrix::operator() (size_t i, size_t j)
 {
   return *gsl_matrix_ptr(mat_.get(), i, j);
 }
-const gsl_matrix *GSL_Wrappers::Matrix::operator* () const noexcept
+gsl_matrix *GSL_Wrappers::Matrix::operator* () const noexcept
 {
   return mat_.get();
 }
@@ -50,7 +50,7 @@ double& GSL_Wrappers::Vector::operator() (size_t i)
 {
   return *gsl_vector_ptr(vec_.get(), i);
 }
-const gsl_vector *GSL_Wrappers::Vector::operator* () const noexcept
+gsl_vector *GSL_Wrappers::Vector::operator* () const noexcept
 {
   return vec_.get();
 }
