@@ -23,9 +23,14 @@ namespace GSL_Wrappers
     {
 
       using Deleter = void(*)(gsl_matrix *);
-      std::unique_ptr<gsl_matrix,Deleter> mat_;
+      std::unique_ptr<gsl_matrix,Deleter> mat_{nullptr,gsl_matrix_free};
      public:
+      Matrix()=default;
       Matrix (size_t rows, size_t columns);
+      Matrix ( const Matrix &);
+      Matrix (Matrix&&)= default;
+      Matrix& operator=(const Matrix&);
+      Matrix& operator =(Matrix&&);
       double & operator()(size_t i, size_t j);
       double get(size_t i, size_t j) const;
       gsl_matrix * operator*() const noexcept ;
@@ -38,9 +43,14 @@ namespace GSL_Wrappers
     class Vector
     {
       using Deleter = void(*)(gsl_vector *);
-      std::unique_ptr<gsl_vector,Deleter> vec_;
+      std::unique_ptr<gsl_vector,Deleter> vec_{nullptr,gsl_vector_free};
      public:
-      Vector (size_t);
+      Vector()= default;
+      explicit Vector (size_t);
+      Vector ( const Vector &);
+      Vector (Vector&&)= default;
+      Vector& operator=(const Vector&);
+      Vector& operator=(Vector&&);
       double & operator()(size_t);
       double get(size_t) const;
       gsl_vector * operator*() const noexcept ;

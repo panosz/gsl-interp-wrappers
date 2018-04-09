@@ -2,7 +2,6 @@
 // Created by Panagiotis Zestanakis on 30/03/18.
 //
 #include "Interpolant1D.hpp"
-#include <exception>
 using namespace GSL_Wrappers;
 
 ReturnType SplineBase::general_spline_eval(double x, int (*eval_fn)(const gsl_spline *, double, gsl_interp_accel* , double *)) const noexcept
