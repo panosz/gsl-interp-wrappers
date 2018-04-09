@@ -15,6 +15,13 @@ GSL_Wrappers::Matrix::Matrix (size_t r, size_t c)
     :mat_{gsl_matrix_calloc(r, c),gsl_matrix_free}
 {}
 
+Matrix::Matrix (const Matrix& m)
+:mat_{gsl_matrix_calloc(m.size().noOfRows, m.size().noOfColumns),gsl_matrix_free}
+{
+  gsl_matrix_memcpy(mat_.get(),m.mat_.get());
+}
+
+
 
 double& GSL_Wrappers::Matrix::operator() (size_t i, size_t j)
 {
@@ -40,6 +47,17 @@ void Matrix::swap (Matrix& other) noexcept
 {
   using std::swap;
   swap(mat_,other.mat_);
+}
+Matrix& Matrix::operator= (const Matrix& m)
+{
+  Matrix tmp{m};
+  swap(tmp);
+  return *this;
+}
+Matrix& Matrix::operator= (Matrix&& m)
+{
+  swap(m);
+  return *this;
 }
 
 GSL_Wrappers::Vector::Vector (size_t n):
@@ -67,6 +85,23 @@ void Vector::swap (Vector& other) noexcept
 {
   using std::swap;
   swap(vec_,other.vec_);
+}
+Vector::Vector (const Vector&v):
+vec_{gsl_vector_calloc(v.size()),gsl_vector_free}
+{
+ gsl_vector_memcpy(vec_.get(),v.vec_.get());
+}
+Vector& Vector::operator= (const Vector&v)
+{
+  Vector tmp{v};
+  swap(tmp);
+  return *this;
+}
+
+Vector& Vector::operator= (Vector&& v)
+{
+  swap(v);
+  return *this;
 }
 
 std::ostream& GSL_Wrappers::operator<< (std::ostream& os, const GSL_Wrappers::Vector& v)
