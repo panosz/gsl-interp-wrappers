@@ -87,3 +87,6 @@ export(PACKAGE ${PROJECT_NAME})
 
 #add tests
 add_subdirectory(${PROJECT_SOURCE_DIR}/src/tests)
+
+#add examples
+add_subdirectory(${PROJECT_SOURCE_DIR}/src/examples)
