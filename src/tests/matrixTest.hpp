@@ -33,7 +33,17 @@ TEST(aMatrix,CanHoldValues)
   Matrix m(2,3);
   m(1,1)=7;
   ASSERT_EQ(m(1,1),7);
+
 }
+
+TEST(aMatrix,roundAndSquareBracketsAreEquivalent)
+{
+  Matrix m(2,3);
+  m(1,1)=7;
+  ASSERT_EQ(m(1,1),7);
+  auto matrix_index=3*1+1;
+  ASSERT_EQ(m[matrix_index],7);
+};
 
 TEST(aMatrix,isMoveConstructable)
 {
@@ -98,6 +108,13 @@ TEST(aVector,CanHoldValues)
   v(1)=7;
   ASSERT_EQ(v(1),7);
 }
+
+TEST(aVector,roundAndSquareBracketsAreEquivalent)
+{
+  Vector v(10);
+  v(5)=7;
+  ASSERT_EQ(v[5],7);
+};
 
 TEST(aVector,isMoveConstructable)
 {

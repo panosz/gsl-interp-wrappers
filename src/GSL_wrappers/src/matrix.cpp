@@ -26,6 +26,23 @@ double& GSL_Wrappers::Matrix::operator() (size_t i, size_t j)
 {
   return *gsl_matrix_ptr(mat_.get(), i, j);
 }
+
+double& GSL_Wrappers::Matrix::operator[] (size_t s)
+{
+  auto numberOfCols=size().noOfColumns;
+  size_t i = s/numberOfCols;
+  size_t j = s%numberOfCols;
+  return operator()(i,j);
+}
+
+double Matrix::operator[] (size_t s) const
+{
+  auto numberOfCols=size().noOfColumns;
+  size_t i = s/numberOfCols;
+  size_t j = s%numberOfCols;
+  return *gsl_matrix_ptr(mat_.get(), i, j);
+}
+
 gsl_matrix *GSL_Wrappers::Matrix::operator* () const noexcept
 {
   return mat_.get();
@@ -59,14 +76,25 @@ Matrix& Matrix::operator= (Matrix&& m)
   return *this;
 }
 
+
 GSL_Wrappers::Vector::Vector (size_t n):
     vec_{gsl_vector_calloc(n),gsl_vector_free}
 { }
 
 double& GSL_Wrappers::Vector::operator() (size_t i)
 {
-  return *gsl_vector_ptr(vec_.get(), i);
+  return operator[](i);
 }
+double& Vector::operator[] (size_t i)
+{
+  return *gsl_vector_ptr(vec_.get(),i);
+}
+
+double Vector::operator[] (size_t i) const
+{
+  return *gsl_vector_ptr(vec_.get(),i);
+}
+
 gsl_vector *GSL_Wrappers::Vector::operator* () const noexcept
 {
   return vec_.get();
@@ -102,6 +130,7 @@ Vector& Vector::operator= (Vector&& v)
   swap(v);
   return *this;
 }
+
 
 std::ostream& GSL_Wrappers::operator<< (std::ostream& os, const GSL_Wrappers::Vector& v)
 {

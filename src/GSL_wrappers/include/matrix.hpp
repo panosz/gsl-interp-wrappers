@@ -32,6 +32,8 @@ namespace GSL_Wrappers
       Matrix& operator=(const Matrix&);
       Matrix& operator =(Matrix&&);
       double & operator()(size_t i, size_t j);
+      double & operator[](size_t s);
+      double  operator[](size_t s) const;
       double get(size_t i, size_t j) const;
       gsl_matrix * operator*() const noexcept ;
       MatrixSize size() const noexcept ;
@@ -52,6 +54,8 @@ namespace GSL_Wrappers
       Vector& operator=(const Vector&);
       Vector& operator=(Vector&&);
       double & operator()(size_t);
+      double & operator[](size_t);
+      double operator [] (size_t) const;
       double get(size_t) const;
       gsl_vector * operator*() const noexcept ;
       size_t size() const noexcept ;
