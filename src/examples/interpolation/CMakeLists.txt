@@ -1,0 +1,5 @@
+add_executable(interpolation_example interpolation1D.cpp)
+
+set_target_properties(interpolation_example PROPERTIES EXCLUDE_FROM_ALL TRUE)
+
+target_link_libraries(interpolation_example PUBLIC ${PROJECT_NAME})

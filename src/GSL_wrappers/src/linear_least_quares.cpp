@@ -4,7 +4,7 @@
 
 #include "linear_least_quares.hpp"
 #include <memory>
-
+#include <gsl/gsl_matrix.h>
 
 GSL_Wrappers::WorkspaceUniquePtr GSL_Wrappers::makeWorkspaceUniquePtr (const GSL_Wrappers::MatrixSize &ms)
 {
@@ -14,11 +14,10 @@ GSL_Wrappers::WorkspaceUniquePtr GSL_Wrappers::makeWorkspaceUniquePtr (const GSL
 
 GSL_Wrappers::MultifitLinear::MultifitLinear (const GSL_Wrappers::Matrix& predictorMatrix, const GSL_Wrappers::Vector& observations)
 :workspace_{makeWorkspaceUniquePtr(predictorMatrix.size())},
- covariance_{predictorMatrix.size().noOfColumns,predictorMatrix.size().noOfColumns},
- params_{predictorMatrix.size().noOfColumns}
+ covariance_(predictorMatrix.size().noOfColumns,predictorMatrix.size().noOfColumns),
+ params_(predictorMatrix.size().noOfColumns)
 
 {
-
   gsl_multifit_linear(*predictorMatrix,*observations,*params_,*covariance_,&chisq_,workspace_.get());
 }
 const GSL_Wrappers::Matrix& GSL_Wrappers::MultifitLinear::covariance () const

@@ -52,13 +52,13 @@ namespace GSL_Wrappers
       size_t size () const;
       Row& operator =(const std::initializer_list<double> &);
     };
-    
+
 
     template <class E>
     Row& operator<<(Row& r, const E& e)
     {
       if (r.size()==e.size())
-        std::copy(e.begin(),e.end(),r.begin());
+        std::copy(std::begin(e),std::end(e),r.begin());
       else
         throw std::length_error("Operator << : incompatible input size for Row");
       return r;
@@ -68,7 +68,7 @@ namespace GSL_Wrappers
     void operator<<(Row&& r, const E& e)
     {
       if (r.size()==e.size())
-        std::copy(e.begin(),e.end(),r.begin());
+        std::copy(std::begin(e),std::end(e),r.begin());
       else
         throw std::length_error("Operator << : incompatible input size for Row");
     }
@@ -211,13 +211,13 @@ namespace GSL_Wrappers
     Vector& operator<<(Vector& vector, const E& e)
     {
       if (vector.size()==e.size())
-        std::copy(e.begin(),e.end(),vector.begin());
+        std::copy(std::begin(e),std::end(e),vector.begin());
       else
         throw std::length_error("Operator << : incompatible input size for Vector");
       return vector;
     }
 
-    
+
 
     std::ostream& operator<<(std::ostream& os, const Matrix&);
     std::ostream& operator<<(std::ostream& os, const Vector&);

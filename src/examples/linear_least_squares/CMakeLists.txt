@@ -1,0 +1,5 @@
+add_executable(linear_least_squares_example llsq.cpp)
+
+set_target_properties(linear_least_squares_example PROPERTIES EXCLUDE_FROM_ALL TRUE)
+
+target_link_libraries(linear_least_squares_example PUBLIC ${PROJECT_NAME})
