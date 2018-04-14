@@ -146,7 +146,7 @@ TEST(aVector, isCopyable)
 TEST(aVector,isMovable)
 {
   Vector v1{};
-  auto v2=Vector{10};
+  auto v2=Vector(10);
   v2(8)=5;
   v1=std::move(v2);
   ASSERT_EQ(v1(8),5);
@@ -154,11 +154,27 @@ TEST(aVector,isMovable)
 
 TEST(aVector,CopiesToSelf)
 {
-  auto v1=Vector{10};
+  auto v1=Vector(10);
   v1(8)=5;
   v1=v1;
   ASSERT_EQ(v1(8),5);
 }
+
+TEST(aVector,supportsRangeForAccess)
+{
+  Vector v(10);
+  for(auto & i:v)
+    i=M_PI_2;
+  ASSERT_DOUBLE_EQ(v(5),M_PI_2);
+}
+
+TEST(aVector, supportsConstuctionFromInitializerList)
+{
+  Vector v{0,1,2,3,4,5,6,7,8};
+  ASSERT_EQ(v.size(),9);
+  ASSERT_EQ(v[3],3);
+}
+
 
 
 #endif //GSL_WRAPPERS_MATRIXTEST_HPP

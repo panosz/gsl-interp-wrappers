@@ -8,6 +8,7 @@
 #include "matrix.hpp"
 
 
+
 using namespace GSL_Wrappers;
 
 GSL_Wrappers::Matrix::Matrix (size_t r, size_t c)
@@ -66,7 +67,7 @@ void Matrix::swap (Matrix& other) noexcept
 }
 Matrix& Matrix::operator= (const Matrix& m)
 {
-  Matrix tmp{m};
+  Matrix tmp(m);
   swap(tmp);
   return *this;
 }
@@ -120,7 +121,7 @@ vec_{gsl_vector_calloc(v.size()),gsl_vector_free}
 }
 Vector& Vector::operator= (const Vector&v)
 {
-  Vector tmp{v};
+  Vector tmp(v);
   swap(tmp);
   return *this;
 }
@@ -134,8 +135,8 @@ Vector& Vector::operator= (Vector&& v)
 
 std::ostream& GSL_Wrappers::operator<< (std::ostream& os, const GSL_Wrappers::Vector& v)
 {
-  for (unsigned i=0;i<v.size();++i)
-    os << v.get(i) <<'\n';
+  for (const auto & i:v)
+    os << i <<'\n';
   return os;
 }
 
