@@ -223,6 +223,8 @@ namespace GSL_Wrappers
 
 
 
+
+
     std::ostream& operator<<(std::ostream& os, const Matrix&);
     std::ostream& operator<<(std::ostream& os, const Vector&);
 
