@@ -11,6 +11,7 @@
 #include <gsl/gsl_matrix.h>
 #include <iostream>
 #include <memory>
+#include <iterator>
 
 # include <boost/iterator/iterator_adaptor.hpp>
 
@@ -24,6 +25,8 @@
 namespace GSL_Wrappers
 {
 
+
+
     struct MatrixSize
     {
         size_t noOfRows;
@@ -31,11 +34,57 @@ namespace GSL_Wrappers
     };
 
 
+    /* Row
+     * ------------------------------------------------*/
+
+    class Matrix;
+
+    class Row
+    {
+      friend Matrix;
+
+      double* begin_;
+      double* end_;
+      Row(double* begin,double* end); //only Matrix can construct Row
+     public:
+
+      double* begin();
+      const double* begin() const;
+      double* end();
+      const double* end() const;
+      size_t size () const;
+      Row& operator =(const std::initializer_list<double> &);
+    };
+
+    template <class E>
+    Row& operator<<(Row& r, const E& e)
+    {
+      if (r.size()==e.size())
+        std::copy(e.begin(),e.end(),r.begin());
+      else
+        throw std::length_error("Operator << : incompatible input size for Row");
+      return r;
+    }
+
+    template <class E>
+    void operator<<(Row&& r, const E& e)
+    {
+      if (r.size()==e.size())
+        std::copy(e.begin(),e.end(),r.begin());
+      else
+        throw std::length_error("Operator << : incompatible input size for Row");
+    }
+
+    /* Matrix
+     * ------------------------------------------------*/
+
     class Matrix
     {
 
       using Deleter = void(*)(gsl_matrix *);
       std::unique_ptr<gsl_matrix,Deleter> mat_{nullptr,gsl_matrix_free};
+      size_t unused_elems_in_a_row() const
+      { return mat_->tda - size().noOfColumns;}
      public:
       Matrix()=default;
       Matrix (size_t rows, size_t columns);
@@ -52,7 +101,23 @@ namespace GSL_Wrappers
       void swap(Matrix &) noexcept;
 
 
+
+      Row row(size_t i)
+      {
+        double* first = & operator()(i,0);
+        auto row_begin= first;
+        double * next_to_last = first+size().noOfColumns;
+        auto row_end = next_to_last;
+        return Row(row_begin,row_end);
+      };
+
     };
+
+
+
+
+
+
 
 
 
@@ -62,7 +127,7 @@ namespace GSL_Wrappers
             vector_iter<Value>               // Derived
             , Value*                          // Base
             , boost::use_default              // Value
-            , boost::forward_traversal_tag    // CategoryOrTraversal
+            , boost::random_access_traversal_tag    // CategoryOrTraversal
         >
     {
      private:
@@ -78,7 +143,7 @@ namespace GSL_Wrappers
 
       vector_iter(Value* p, size_t stride)
           : vector_iter::iterator_adaptor_(p),stride_{stride} {}
-      template <class OtherValue>
+      template <typename OtherValue>
       vector_iter(
           vector_iter<OtherValue> const& other
 # ifndef BOOST_NO_SFINAE
@@ -93,7 +158,10 @@ namespace GSL_Wrappers
 
      private:
       friend class boost::iterator_core_access;
-      void increment() { this->base_reference() = this->base() + stride_; }
+      void increment()
+      { this->base_reference() = this->base() + stride_; }
+
+
     };
 
     using vector_iterator= vector_iter<double>;
@@ -103,11 +171,14 @@ namespace GSL_Wrappers
     // has an initializer_list constructor.
     // Prefer round bracket constructors, unless passing an initializer_list;
     {
+
+     protected:
       using Deleter = void(*)(gsl_vector *);
       std::unique_ptr<gsl_vector,Deleter> vec_{nullptr,gsl_vector_free};
      public:
       Vector()= default;
       explicit Vector (size_t);
+      explicit Vector(gsl_vector *);
       Vector ( const Vector &);
       Vector (Vector&&)= default;
       template<typename E>
@@ -146,15 +217,11 @@ namespace GSL_Wrappers
     };
 
     template<>
-    Vector::Vector(std::initializer_list<Vector> v)
+    Vector::Vector(std::initializer_list<Vector> v);
     //this is in case the user tries makes use of the copy constructor using curly braces.
     //The compiler will choose the specialized template initializer_list constructor.
-    {
-      if (v.size()!=1)
-        throw std::logic_error("Cannot Construct Vector from List of Vectors");
-      Vector tmp(*v.begin());
-      swap(tmp);
-    }
+
+
 
     std::ostream& operator<<(std::ostream& os, const Matrix&);
     std::ostream& operator<<(std::ostream& os, const Vector&);

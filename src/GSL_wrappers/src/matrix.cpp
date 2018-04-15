@@ -82,6 +82,10 @@ GSL_Wrappers::Vector::Vector (size_t n):
     vec_{gsl_vector_calloc(n),gsl_vector_free}
 { }
 
+Vector::Vector (gsl_vector * v):
+vec_{v,gsl_vector_free}
+{ }
+
 double& GSL_Wrappers::Vector::operator() (size_t i)
 {
   return operator[](i);
@@ -132,6 +136,16 @@ Vector& Vector::operator= (Vector&& v)
   return *this;
 }
 
+template<>
+Vector::Vector(std::initializer_list<Vector> v)
+//this is in case the user tries makes use of the copy constructor using curly braces.
+//The compiler will choose the specialized template initializer_list constructor.
+{
+  if (v.size()!=1)
+    throw std::logic_error("Cannot Construct Vector from List of Vectors");
+  Vector tmp(*v.begin());
+  swap(tmp);
+}
 
 std::ostream& GSL_Wrappers::operator<< (std::ostream& os, const GSL_Wrappers::Vector& v)
 {
@@ -163,3 +177,43 @@ void std::swap<Vector> (GSL_Wrappers::Vector& a, GSL_Wrappers::Vector& b)
 {
   a.swap(b);
 }
+
+
+/* Row:
+ * ----------------------------------------------*/
+
+
+Row::Row (double* begin, double* end)
+:begin_{begin},end_{end}
+{ }
+
+double* Row::begin ()
+{
+  return begin_;
+}
+const double* Row::begin () const
+{
+  return begin_;
+}
+double* Row::end ()
+{
+  return end_;
+}
+const double* Row::end () const
+{
+  return end_;
+}
+size_t Row::size () const
+{
+  return static_cast<size_t >(std::distance(begin_,end_));
+}
+
+Row& Row::operator= (const std::initializer_list<double>& e)
+{
+  if(size()==e.size())
+    std::copy(e.begin(),e.end(),begin());
+  else
+    throw std::length_error("Row::opeator=() : Input length does not match Row length");
+  return *this;
+}
+

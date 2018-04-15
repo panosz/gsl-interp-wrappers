@@ -5,6 +5,7 @@
 #ifndef GSL_WRAPPERS_MATRIXTEST_HPP
 #define GSL_WRAPPERS_MATRIXTEST_HPP
 
+#include <gsl/gsl_vector_double.h>
 #include "gmock/gmock.h"
 #include "matrix.hpp"
 
@@ -80,12 +81,33 @@ TEST(aMatrix,isMovable)
   ASSERT_EQ(m1(8,8),5);
 }
 
-TEST(aMatrix,CopiesToSelf)
+TEST(aMatrix,copiesToSelf)
 {
   auto m1=Matrix{10,10};
   m1(7,8)=5;
   m1=m1;
   ASSERT_EQ(m1(7,8),5);
+
+}
+
+TEST(aMatrix,givesAccessToRows)
+{
+  auto m=Matrix{4,4};
+  {
+    auto r0=m.row(0);
+    for (auto & e:r0)
+      e=5;                         //range assignment
+    auto r1=m.row(1);
+    r1<<std::vector<int>{1,2,3,4}; //lvalue stream assignment
+    m.row(2)<<std::initializer_list<double>{-1,-2,-3,-4}; //rvalue stream assignment
+    m.row(3)={10,11,12,13};               //rvalue initializer list assignment
+  }
+
+  ASSERT_ANY_THROW((m.row(1)={M_PI,M_EULER}));
+  ASSERT_EQ(m(0,2),5);//range assignment
+  ASSERT_EQ(m(1,2),3);//lvalue stream assignment
+  ASSERT_EQ(m(2,0),-1);//rvalue stream assignment
+  ASSERT_EQ(m(3,3),13);//rvalue initializer list assignment
 }
 
 TEST(aVector,KnowsItsSize)
@@ -165,15 +187,31 @@ TEST(aVector,supportsRangeForAccess)
   Vector v(10);
   for(auto & i:v)
     i=M_PI_2;
-  ASSERT_DOUBLE_EQ(v(5),M_PI_2);
+  ASSERT_DOUBLE_EQ(v[5],M_PI_2);
 }
 
-TEST(aVector, supportsConstuctionFromInitializerList)
+TEST(aVector, supportsInitializerLists)
 {
   Vector v{0,1,2,3,4,5,6,7,8};
   ASSERT_EQ(v.size(),9);
   ASSERT_EQ(v[3],3);
+
+
+  v={M_PI,M_PI_2,M_1_PI,M_2_SQRTPI};
+  ASSERT_EQ(v.size(),4);
+  ASSERT_DOUBLE_EQ(v[3],M_2_SQRTPI);
 }
+
+TEST(aVector, initializerListsConstructorDoesNotBreakCurlyBracketCopyConstructor)
+{
+  // However, prefer round bracket copy constructor;
+
+  Vector v1{0,1,2,3,4,5,6,7,8};
+  Vector v2{v1};
+  ASSERT_EQ(v2.size(),9);
+  ASSERT_EQ(v2[3],3);
+}
+
 
 
 
