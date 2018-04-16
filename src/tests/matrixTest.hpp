@@ -190,7 +190,7 @@ TEST(aVector,supportsRangeForAccess)
   ASSERT_DOUBLE_EQ(v[5],M_PI_2);
 }
 
-TEST(aVector, supportsInitializerLists)
+TEST(aVector, supportsInitializerListConstruction)
 {
   Vector v{0,1,2,3,4,5,6,7,8};
   ASSERT_EQ(v.size(),9);
@@ -204,7 +204,7 @@ TEST(aVector, supportsInitializerLists)
 
 TEST(aVector, initializerListsConstructorDoesNotBreakCurlyBracketCopyConstructor)
 {
-  // However, prefer round bracket copy constructor;
+  //For copy construction, prefer round bracket copy constructor;
 
   Vector v1{0,1,2,3,4,5,6,7,8};
   Vector v2{v1};
@@ -212,6 +212,14 @@ TEST(aVector, initializerListsConstructorDoesNotBreakCurlyBracketCopyConstructor
   ASSERT_EQ(v2[3],3);
 }
 
+TEST(aVector,streamAssignment)
+{
+  auto v = Vector(4);
+  v << std::vector<int>{1, 2, 3, 4};
+  ASSERT_THROW((v<<std::array<double ,2>{M_PI, M_EULER}), std::length_error); //stream assignment exception safety
+  ASSERT_EQ(v[2], 3);
+
+}
 
 
 
