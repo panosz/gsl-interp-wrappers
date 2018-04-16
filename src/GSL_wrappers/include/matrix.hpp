@@ -58,7 +58,7 @@ namespace GSL_Wrappers
     Row& operator<<(Row& r, const E& e)
     {
       if (r.size()==e.size())
-        std::copy(std::begin(e),std::end(e),r.begin());
+        std::copy(e.begin(),e.end(),r.begin());
       else
         throw std::length_error("Operator << : incompatible input size for Row");
       return r;
@@ -68,7 +68,7 @@ namespace GSL_Wrappers
     void operator<<(Row&& r, const E& e)
     {
       if (r.size()==e.size())
-        std::copy(std::begin(e),std::end(e),r.begin());
+        std::copy(e.begin(),e.end(),r.begin());
       else
         throw std::length_error("Operator << : incompatible input size for Row");
     }
@@ -211,7 +211,7 @@ namespace GSL_Wrappers
     Vector& operator<<(Vector& vector, const E& e)
     {
       if (vector.size()==e.size())
-        std::copy(std::begin(e),std::end(e),vector.begin());
+        std::copy(e.begin(),e.end(),vector.begin());
       else
         throw std::length_error("Operator << : incompatible input size for Vector");
       return vector;
