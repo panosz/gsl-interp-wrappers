@@ -13,7 +13,15 @@ message(STATUS "BLAS_LIBRARIES ${BLAS_LIBRARIES}")
 
 
 target_link_libraries(${PROJECT_NAME}  PUBLIC GSL::gsl PRIVATE ${BLAS_LIBRARIES})
-target_compile_options(${PROJECT_NAME} PRIVATE -Wall)
+
+target_compile_options(${PROJECT_NAME} PRIVATE
+        -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic
+        -Weffc++
+        $<$<CONFIG:Release>:
+        -O2
+        -DHAVE_INLINE
+        -DGSL_RANGE_CHECK_OFF >
+        )
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
 
