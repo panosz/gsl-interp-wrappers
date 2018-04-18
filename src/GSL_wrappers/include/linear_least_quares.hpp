@@ -26,7 +26,7 @@ namespace GSL_Wrappers
       WorkspaceUniquePtr workspace_;
       Matrix covariance_;
       Vector params_;
-      double chisq_;
+      double chisq_=0;
 
       mutable std::mutex m_;
       mutable double rhosqCached_;
@@ -39,5 +39,5 @@ namespace GSL_Wrappers
 
 
     };
-};
+}
 #endif //GSL_WRAPPERS_LINEAR_LEAST_QUARES_HPP

@@ -18,6 +18,16 @@ GSL_Wrappers::MultifitLinear::MultifitLinear (const GSL_Wrappers::Matrix& predic
  params_(predictorMatrix.size().noOfColumns)
 
 {
+
+  auto numberOfParameters= predictorMatrix.size().noOfColumns;
+  auto numberOfObservations = predictorMatrix.size().noOfRows;
+
+  if (observations.size()!=numberOfObservations)
+    throw std::length_error("GSL_Wrappers::MultifitLinear: Incompatible sizes of predictorMatrix and observations");
+
+  if (numberOfObservations<numberOfParameters)
+    throw std::length_error("GSL_Wrappers::MultifitLinear: Not enough observations to fit the model parameters");
+
   gsl_multifit_linear(*predictorMatrix,*observations,*params_,*covariance_,&chisq_,workspace_.get());
 }
 const GSL_Wrappers::Matrix& GSL_Wrappers::MultifitLinear::covariance () const
