@@ -15,6 +15,7 @@
 
 #include "matrix_and_vector_iterators.hpp"
 #include <boost/iterator/transform_iterator.hpp>
+#include <boost/range/iterator_range.hpp>
 
 
 
@@ -80,26 +81,6 @@ namespace GSL_Wrappers
     /* Matrix
      * ------------------------------------------------*/
 
-    class RowsRange
-    {
-      friend Matrix;
-      Matrix& mat_;
-      RowsRange(Matrix& mat):mat_{mat}{};
-     public:
-      auto begin();
-      auto end();
-
-    };
-
-    class RowsRangeConst
-    {
-      friend Matrix;
-      const Matrix& mat_;
-      RowsRangeConst(const Matrix& mat):mat_{mat}{};
-     public:
-      auto begin() const;
-      auto end() const;
-    };
 
     class Matrix
     {
@@ -151,10 +132,10 @@ namespace GSL_Wrappers
       };
 
       auto rows()
-      {return RowsRange(*this);};
+      {return boost::iterator_range<decltype(rows_begin())>(rows_begin(), rows_end());};
 
       const auto rows() const
-      {return RowsRangeConst(*this);}
+      {return boost::iterator_range<decltype(rows_cbegin())>(rows_cbegin(), rows_cend());}
     };
 
 

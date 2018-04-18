@@ -185,15 +185,6 @@ Row& Row::operator= (const std::initializer_list<double>& e)
   return *this;
 }
 
-auto RowsRange::begin ()
-{return mat_.rows_begin();}
-auto RowsRange::end ()
-{return mat_.rows_end();}
-auto RowsRangeConst::begin () const
-{return mat_.rows_cbegin();}
-auto RowsRangeConst::end () const
-{return mat_.rows_cend();}
-
 
 
 /* Free Functions:
