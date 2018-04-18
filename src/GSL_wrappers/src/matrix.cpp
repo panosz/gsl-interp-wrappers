@@ -145,40 +145,7 @@ Vector::Vector (std::initializer_list<Vector> v)
   swap(tmp);
 }
 
-std::ostream& GSL_Wrappers::operator<< (std::ostream& os, const GSL_Wrappers::Vector& v)
-{
-  for (const auto& i:v)
-    os << i << '\n';
-  return os;
-}
 
-std::ostream& GSL_Wrappers::operator<< (std::ostream& os, const GSL_Wrappers::Matrix& m)
-{
-  for (auto row = m.rows_cbegin(); row != m.rows_cend(); ++row)
-    os<< *row;
-  os<<'\n';
-
-  return os;
-}
-std::ostream& GSL_Wrappers::operator<< (std::ostream& os, const Row& row)
-{
-  for (const auto &e:row)
-      os << e << '\t';
-  os << '\n';
-  return os;
-}
-
-template<>
-void std::swap<GSL_Wrappers::Matrix> (GSL_Wrappers::Matrix& a, GSL_Wrappers::Matrix& b)
-{
-  a.swap(b);
-}
-
-template<>
-void std::swap<Vector> (GSL_Wrappers::Vector& a, GSL_Wrappers::Vector& b)
-{
-  a.swap(b);
-}
 
 /* Row:
  * ----------------------------------------------*/
@@ -218,3 +185,51 @@ Row& Row::operator= (const std::initializer_list<double>& e)
   return *this;
 }
 
+auto RowsRange::begin ()
+{return mat_.rows_begin();}
+auto RowsRange::end ()
+{return mat_.rows_end();}
+auto RowsRangeConst::begin () const
+{return mat_.rows_cbegin();}
+auto RowsRangeConst::end () const
+{return mat_.rows_cend();}
+
+
+
+/* Free Functions:
+ * ----------------------------------------------*/
+
+std::ostream& GSL_Wrappers::operator<< (std::ostream& os, const GSL_Wrappers::Vector& v)
+{
+  for (const auto& i:v)
+    os << i << '\n';
+  return os;
+}
+
+std::ostream& GSL_Wrappers::operator<< (std::ostream& os, const GSL_Wrappers::Matrix& m)
+{
+  for (const auto& row : m.rows())
+    os<< row;
+  os<<'\n';
+
+  return os;
+}
+std::ostream& GSL_Wrappers::operator<< (std::ostream& os, const Row& row)
+{
+  for (const auto &e:row)
+    os << e << '\t';
+  os << '\n';
+  return os;
+}
+
+template<>
+void std::swap<GSL_Wrappers::Matrix> (GSL_Wrappers::Matrix& a, GSL_Wrappers::Matrix& b)
+{
+  a.swap(b);
+}
+
+template<>
+void std::swap<Vector> (GSL_Wrappers::Vector& a, GSL_Wrappers::Vector& b)
+{
+  a.swap(b);
+}

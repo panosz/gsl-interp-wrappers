@@ -18,7 +18,6 @@
 
 
 
-
 namespace GSL_Wrappers
 {
 
@@ -76,8 +75,31 @@ namespace GSL_Wrappers
     std::ostream& operator<<(std::ostream& os, const Row&);
 
 
+
+
     /* Matrix
      * ------------------------------------------------*/
+
+    class RowsRange
+    {
+      friend Matrix;
+      Matrix& mat_;
+      RowsRange(Matrix& mat):mat_{mat}{};
+     public:
+      auto begin();
+      auto end();
+
+    };
+
+    class RowsRangeConst
+    {
+      friend Matrix;
+      const Matrix& mat_;
+      RowsRangeConst(const Matrix& mat):mat_{mat}{};
+     public:
+      auto begin() const;
+      auto end() const;
+    };
 
     class Matrix
     {
@@ -128,6 +150,11 @@ namespace GSL_Wrappers
         return make_row(row_begin);
       };
 
+      auto rows()
+      {return RowsRange(*this);};
+
+      const auto rows() const
+      {return RowsRangeConst(*this);}
     };
 
 
