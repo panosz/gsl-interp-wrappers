@@ -94,13 +94,15 @@ TEST(aMatrix,givesAccessToRows)
 {
   auto m=Matrix{4,4};
   {
-    auto r0=m.row(0);
+    auto r0 = *(m.rows_begin());
     for (auto & e:r0)
       e=5;                         //range assignment
     auto r1=m.row(1);
     r1<<std::vector<int>{1,2,3,4}; //lvalue stream assignment
     m.row(2)<<std::initializer_list<double>{-1,-2,-3,-4}; //rvalue stream assignment
     m.row(3)={10,11,12,13};               //rvalue initializer list assignment
+
+    std::cout<<m<<std::endl;
   }
 
   ASSERT_ANY_THROW((m.row(1)={M_PI,M_EULER}));

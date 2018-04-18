@@ -5,21 +5,18 @@
 #ifndef GSL_WRAPPERS_MATRIX_HPP
 #define GSL_WRAPPERS_MATRIX_HPP
 
-#define HAVE_INLINE
-#define GSL_RANGE_CHECK_OFF
 
 #include <gsl/gsl_matrix.h>
 #include <iostream>
 #include <memory>
 #include <iterator>
-
-# include <boost/iterator/iterator_adaptor.hpp>
-
-# ifndef BOOST_NO_SFINAE
-#  include <boost/type_traits/is_convertible.hpp>
-#  include <boost/utility/enable_if.hpp>
+#include <functional>
 #include <gsl/gsl_vector_double.h>
-# endif
+
+#include "matrix_and_vector_iterators.hpp"
+#include <boost/iterator/transform_iterator.hpp>
+
+
 
 
 namespace GSL_Wrappers
@@ -76,6 +73,9 @@ namespace GSL_Wrappers
         throw std::length_error("Operator << : incompatible input size for Row");
     }
 
+    std::ostream& operator<<(std::ostream& os, const Row&);
+
+
     /* Matrix
      * ------------------------------------------------*/
 
@@ -86,6 +86,12 @@ namespace GSL_Wrappers
       std::unique_ptr<gsl_matrix,Deleter> mat_{nullptr,gsl_matrix_free};
       size_t unused_elems_in_a_row() const
       { return mat_->tda - size().noOfColumns;}
+      Row make_row(double* row_begin)
+      {return Row(row_begin,row_begin+size().noOfColumns);};
+
+      const Row make_row(double* row_begin) const
+      {return Row(row_begin,row_begin+size().noOfColumns);};
+
      public:
       Matrix()=default;
       Matrix (size_t rows, size_t columns);
@@ -101,15 +107,25 @@ namespace GSL_Wrappers
       MatrixSize size() const noexcept ;
       void swap(Matrix &) noexcept;
 
+      auto rows_begin()
+      {return boost::make_transform_iterator(stride_iter<double>(mat_->data,mat_->tda),
+        std::function<Row(double&)>([this](double& x){return make_row(&x);}));}
 
+      auto rows_cbegin() const
+      {return boost::make_transform_iterator(stride_iter<double>(mat_->data,mat_->tda),
+                                             std::function<const Row(double&)>([this](double& x){return make_row(&x);}));}
 
+      auto rows_end()
+      {return boost::make_transform_iterator(stride_iter<double>(mat_->data+mat_->tda*size().noOfRows,mat_->tda),
+          std::function<Row(double&)>([this](double& x){return make_row(&x);}));}
+
+      auto rows_cend() const
+      {return boost::make_transform_iterator(stride_iter<double>(mat_->data+mat_->tda*size().noOfRows,mat_->tda),
+                                             std::function< const Row(double&)>([this](double& x){return make_row(&x);}));}
       Row row(size_t i)
       {
-        double* first = & operator()(i,0);
-        auto row_begin= first;
-        double * next_to_last = first+size().noOfColumns;
-        auto row_end = next_to_last;
-        return Row(row_begin,row_end);
+        double* row_begin = & operator()(i,0);
+        return make_row(row_begin);
       };
 
     };
@@ -122,51 +138,10 @@ namespace GSL_Wrappers
 
 
 
-    template <typename Value=double>
-    class vector_iter
-        : public boost::iterator_adaptor<
-            vector_iter<Value>               // Derived
-            , Value*                          // Base
-            , boost::use_default              // Value
-            , boost::random_access_traversal_tag    // CategoryOrTraversal
-        >
-    {
-     private:
-      struct enabler {};  // a private type avoids misuse
-      const size_t stride_=1;
-
-     public:
-      vector_iter()
-          : vector_iter::iterator_adaptor_(0) {}
-
-      explicit vector_iter(Value* p)
-          : vector_iter::iterator_adaptor_(p) {}
-
-      vector_iter(Value* p, size_t stride)
-          : vector_iter::iterator_adaptor_(p),stride_{stride} {}
-      template <typename OtherValue>
-      vector_iter(
-          vector_iter<OtherValue> const& other
-# ifndef BOOST_NO_SFINAE
-          , typename boost::enable_if<
-          boost::is_convertible<OtherValue*,Value*>
-          , enabler
-      >::type = enabler()
-#endif
-      )
-          : vector_iter::iterator_adaptor_(other.base()),
-            stride_{other.stride_} {}
-
-     private:
-      friend class boost::iterator_core_access;
-      void increment()
-      { this->base_reference() = this->base() + stride_; }
 
 
-    };
-
-    using vector_iterator= vector_iter<double>;
-    using vector_const_iterator = vector_iter<double const>;
+    using vector_iterator= stride_iter<double>;
+    using vector_const_iterator = stride_iter<double const>;
 
     class Vector
     // has an initializer_list constructor.
@@ -196,7 +171,7 @@ namespace GSL_Wrappers
       vector_iterator begin()
       {return vector_iterator(vec_->data,vec_->stride);}
       vector_const_iterator begin() const
-      {return vector_const_iterator(vec_->data,vec_->stride);}
+      {return vector_iterator(vec_->data,vec_->stride);}
 
       vector_iterator end()
       {
@@ -206,7 +181,7 @@ namespace GSL_Wrappers
       vector_const_iterator end() const
       {
           double* next_to_last = vec_->data+vec_->stride*size();
-          return vector_const_iterator(next_to_last,vec_->stride);}
+          return vector_iterator(next_to_last,vec_->stride);}
     };
 
 //
@@ -215,7 +190,7 @@ namespace GSL_Wrappers
     :vec_(gsl_vector_alloc(s.size()),gsl_vector_free)
     {
       std::copy(s.begin(),s.end(),begin());
-    };
+    }
 
     template<>
     Vector::Vector(std::initializer_list<Vector> v);

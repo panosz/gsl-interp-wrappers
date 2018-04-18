@@ -3,7 +3,7 @@ add_library(${PROJECT_NAME} SHARED
         include/Interpolant1D.hpp
         src/Interpolant1D.cpp
         include/gsl_wrappers.hpp
-        src/gsl_wrappers.cpp include/matrix.hpp src/matrix.cpp)
+        src/gsl_wrappers.cpp include/matrix.hpp src/matrix.cpp include/matrix_and_vector_iterators.hpp)
 #
 
 find_package(BLAS REQUIRED)
