@@ -28,8 +28,8 @@ TEST(InterpolationInstantiation, throwsWhenInitializedWithTooFewSamples)
   std::cout << "minimum sample size for Akima periodic " << min_samples<AkimaPeriodicInterpolation>() << '\n';
 
   std::cout << "minimum sample size for Steffen's " << min_samples<SteffenInterpolation>() << '\n';
-  ASSERT_ANY_THROW((SplineInterpolator<xa.size(), SteffenInterpolation>{xa, ya}));
-  ASSERT_ANY_THROW((LowLevelInterpolator<xa.size(),AkimaInterpolation>{xa,ya}));
+  ASSERT_ANY_THROW((SplineInterpolator<SteffenInterpolation>{xa, ya}));
+  ASSERT_ANY_THROW((LowLevelInterpolator<AkimaInterpolation>{xa,ya}));
 }
 
 TEST(InterpolationEvaluation, OutputIsNaNWhenOutsideTheDomain)
@@ -41,8 +41,8 @@ TEST(InterpolationEvaluation, OutputIsNaNWhenOutsideTheDomain)
       ya[i] = i + cos(i * i);
     }
 
-  auto linInterp = LowLevelInterpolator<xa.size(), LinearInterpolation>(xa, ya);
-  auto akimaPeriodicInterp = SplineInterpolator<xa.size(), AkimaPeriodicInterpolation>(xa, ya);
+  LowLevelInterpolator<LinearInterpolation>linInterp(xa, ya);
+  SplineInterpolator<AkimaPeriodicInterpolation> akimaPeriodicInterp(xa, ya);
 
   auto x = -10;
 

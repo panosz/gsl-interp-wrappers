@@ -1,7 +1,7 @@
 #include "gmock/gmock.h"
 #include "gsl_wrappers.hpp"
 #include "matrixTest.hpp"
-//#include "Interp1DTest.hpp"
+#include "Interp1DTest.hpp"
 
 
 
