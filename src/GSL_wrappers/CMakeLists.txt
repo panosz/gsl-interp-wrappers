@@ -19,6 +19,7 @@ target_compile_options(${PROJECT_NAME} PRIVATE
         -Weffc++
         $<$<CONFIG:Release>:
         -O2
+        -march=native
         -DHAVE_INLINE
         -DGSL_RANGE_CHECK_OFF >
         )
