@@ -72,6 +72,10 @@ Matrix& Matrix::operator= (Matrix&& m)
   swap(m);
   return *this;
 }
+gsl_matrix *Matrix::operator-> () const noexcept
+{
+  return mat_.get();
+}
 
 GSL_Wrappers::Vector::Vector (size_t n)
     :
@@ -132,6 +136,10 @@ Vector& Vector::operator= (Vector&& v)
 {
   swap(v);
   return *this;
+}
+gsl_vector *Vector::operator-> () const noexcept
+{
+  return vec_.get();
 }
 
 template<>
