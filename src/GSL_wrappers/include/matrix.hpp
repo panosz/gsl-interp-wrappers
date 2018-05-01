@@ -107,6 +107,7 @@ namespace GSL_Wrappers
       double  operator[](size_t s) const;
       double get(size_t i, size_t j) const;
       gsl_matrix * operator*() const noexcept ;
+      gsl_matrix * operator ->()const noexcept ;
       MatrixSize size() const noexcept ;
       void swap(Matrix &) noexcept;
 
@@ -174,6 +175,7 @@ namespace GSL_Wrappers
       double operator [] (size_t) const;
       double get(size_t) const;
       gsl_vector * operator*() const noexcept ;
+      gsl_vector * operator ->() const noexcept;
       size_t size() const noexcept ;
       void swap(Vector& other) noexcept ;
       vector_iterator begin()

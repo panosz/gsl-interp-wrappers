@@ -32,7 +32,7 @@ GSL_Wrappers::MultifitLinear::MultifitLinear (const GSL_Wrappers::Matrix& predic
 
   gsl_multifit_linear(*predictorMatrix,*observations,*params_,*covariance_,&chisq_,workspace_.get());
 
-  rhosq_= 1-chisq_/gsl_stats_tss((*observations)->data,(*observations)->stride,observations.size());
+  rhosq_= 1-chisq_/gsl_stats_tss(observations->data,observations->stride,observations.size());
 
 }
 const GSL_Wrappers::Matrix& GSL_Wrappers::MultifitLinear::covariance () const
