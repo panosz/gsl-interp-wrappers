@@ -5,6 +5,8 @@
 #include "linear_least_quares.hpp"
 #include <memory>
 #include <gsl/gsl_matrix.h>
+#include <gsl/gsl_statistics_double.h>
+#include <gsl/gsl_vector.h>
 
 GSL_Wrappers::WorkspaceUniquePtr GSL_Wrappers::makeWorkspaceUniquePtr (const GSL_Wrappers::MatrixSize &ms)
 {
@@ -29,6 +31,9 @@ GSL_Wrappers::MultifitLinear::MultifitLinear (const GSL_Wrappers::Matrix& predic
     throw std::length_error("GSL_Wrappers::MultifitLinear: Not enough observations to fit the model parameters");
 
   gsl_multifit_linear(*predictorMatrix,*observations,*params_,*covariance_,&chisq_,workspace_.get());
+
+  rhosq_= 1-chisq_/gsl_stats_tss((*observations)->data,(*observations)->stride,observations.size());
+
 }
 const GSL_Wrappers::Matrix& GSL_Wrappers::MultifitLinear::covariance () const
 {
@@ -37,4 +42,12 @@ const GSL_Wrappers::Matrix& GSL_Wrappers::MultifitLinear::covariance () const
 const GSL_Wrappers::Vector& GSL_Wrappers::MultifitLinear::params () const
 {
   return params_;
+}
+double GSL_Wrappers::MultifitLinear::chisq () const
+{
+  return chisq_;
+}
+double GSL_Wrappers::MultifitLinear::rhosq () const
+{
+  return rhosq_;
 }

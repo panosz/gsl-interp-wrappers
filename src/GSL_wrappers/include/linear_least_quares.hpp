@@ -28,14 +28,15 @@ namespace GSL_Wrappers
       Vector params_;
       double chisq_=0;
 
-      mutable std::mutex m_;
-      mutable double rhosqCached_;
-      mutable bool rhosqValid_;
+      double rhosq_=0;
 
      public:
       MultifitLinear(const Matrix & predictorMatrix, const Vector& observations);
       const Matrix & covariance() const;
       const Vector & params() const;
+      double chisq() const;
+      double rhosq() const;
+
 
 
     };
