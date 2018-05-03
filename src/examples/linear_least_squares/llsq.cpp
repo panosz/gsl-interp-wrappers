@@ -30,7 +30,8 @@ std::cout<<m<<std::endl;
   MultifitLinear fit(m,ya);
 
   auto params = fit.params();
-  std::cout<<params<<'\n';
+  std::cout<<"parameters:\n"<<params<<'\n';
+  std::cout<<"chi_sq = "<< fit.chisq()<<", rho_sq = "<<fit.rhosq()<<'\n';
 
 
 
