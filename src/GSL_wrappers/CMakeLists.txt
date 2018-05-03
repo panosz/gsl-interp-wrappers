@@ -16,7 +16,12 @@ target_link_libraries(${PROJECT_NAME}  PUBLIC GSL::gsl PRIVATE ${BLAS_LIBRARIES}
 
 target_compile_options(${PROJECT_NAME} PRIVATE
         -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic
-        -Weffc++
+        -Weffc++  -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual
+        -Wconversion -Wsign-conversion -Wmisleading-indentation
+        -Wduplicated-cond -Wduplicated-branches -Wlogical-op
+        -Wnull-dereference -Wuseless-cast -Wdouble-promotion
+        -Wformat=2
+
         $<$<CONFIG:Release>:
         -O2
         -march=native
