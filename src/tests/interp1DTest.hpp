@@ -67,6 +67,21 @@ TEST(InterpolationEvaluation, OutputIsNaNWhenOutsideTheDomain)
 
 }
 
+TEST (Interpolators, CoppyAndMoveOperations)
+{
 
+  std::array<double, 10> xa{}, ya{};
+  for (auto i = 0; i < xa.size(); ++i)
+    {
+      xa[i] = i + 0.5 * sin(i);
+      ya[i] = i + cos(i * i);
+    }
+
+  LowLevelInterpolator<LinearInterpolation>linInterp(xa, ya);
+  SplineInterpolator<CSplineInterpolation> cSplineInterp1(xa, ya);
+  auto cSpline2(cSplineInterp1);
+
+  std::cout << '\n' << cSpline2.name() <<" "<< cSpline2.eval(3).result<< '\n';
+}
 
 #endif //GSL_WRAPPERS_INTERPOLANT1DTEST_HPP

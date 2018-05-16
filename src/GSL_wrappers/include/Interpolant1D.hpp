@@ -249,5 +249,20 @@ namespace GSL_Wrappers
       // xa is assumed to be sorted. If otherwise, the behaviour is undefined.
       { }
     };
+
+    template <typename T>
+    void swap(SplineInterpolator<T>& a, SplineInterpolator<T>& b)
+    {
+      a.swap(b);
+    }
+
+    template <typename T>
+    void swap(LowLevelInterpolator<T>& a, LowLevelInterpolator<T>& b)
+    {
+      a.swap(b);
+    }
+
+
+
 }
 #endif //INTERPOLATION1D_GSL_WRAPPERS_HPP
