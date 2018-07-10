@@ -2,7 +2,7 @@
 // Created by Panagiotis Zestanakis on 04/07/18.
 //
 
-#include "polynomials.hpp"
+#include "hermite_polynomial_interpolation.hpp"
 
 namespace GSL_Wrappers
 {
