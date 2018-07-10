@@ -5,7 +5,7 @@
 #ifndef GSL_WRAPPERS_INTERPOLANT1DTEST_HPP
 #define GSL_WRAPPERS_INTERPOLANT1DTEST_HPP
 #include "gmock/gmock.h"
-#include "Interpolant1D.hpp"
+#include "GSL_wrappers/Interpolant1D.hpp"
 
 using namespace GSL_Wrappers;
 using namespace testing;

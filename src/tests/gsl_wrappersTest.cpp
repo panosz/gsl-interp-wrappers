@@ -2,7 +2,7 @@
 #include "gsl_wrappers.hpp"
 #include "matrixTest.hpp"
 #include "Interp1DTest.hpp"
-
+#include "linear_least_squaresTest.hpp"
 
 
 

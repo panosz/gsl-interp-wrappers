@@ -3,7 +3,7 @@
 //
 #include <gsl/gsl_spline.h>
 #include <gsl/gsl_interp.h>
-#include "Interpolant1D.hpp"
+#include "GSL_wrappers/Interpolant1D.hpp"
 #include <iostream>
 using namespace GSL_Wrappers;
 

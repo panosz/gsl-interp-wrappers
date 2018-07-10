@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
-#include "hermite_polynomial_interpolation.hpp"
+#include "GSL_wrappers/hermite_polynomial_interpolation.hpp"
 #include "myUtilities.hpp"
 #include <boost/range/algorithm.hpp>
 #include <boost/range/algorithm_ext.hpp>

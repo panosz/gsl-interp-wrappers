@@ -1,7 +1,7 @@
 //
 // Created by Panagiotis Zestanakis on 16/05/18.
 //
-#include "minimization.hpp"
+#include "GSL_wrappers/minimization.hpp"
 
 using namespace GSL_Wrappers;
 

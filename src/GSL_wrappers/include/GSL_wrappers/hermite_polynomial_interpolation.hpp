@@ -6,7 +6,7 @@
 #define GSL_WRAPPERS_POLYNOMIALS_HPP
 
 #include <vector>
-#include <GSL/gsl_poly.h>
+#include <gsl/gsl_poly.h>
 #include <stdexcept>
 #include <array>
 

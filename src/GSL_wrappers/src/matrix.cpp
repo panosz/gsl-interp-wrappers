@@ -5,7 +5,7 @@
 #include <gsl/gsl_matrix.h>
 #include <utility>
 
-#include "matrix.hpp"
+#include "GSL_wrappers/matrix.hpp"
 
 using namespace GSL_Wrappers;
 

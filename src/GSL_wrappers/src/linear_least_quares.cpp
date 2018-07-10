@@ -2,7 +2,7 @@
 // Created by Panagiotis Zestanakis on 08/04/18.
 //
 
-#include "linear_least_quares.hpp"
+#include "GSL_wrappers/linear_least_quares.hpp"
 #include <memory>
 #include <gsl/gsl_matrix.h>
 #include <gsl/gsl_statistics_double.h>

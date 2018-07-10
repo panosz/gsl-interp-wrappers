@@ -7,7 +7,7 @@
 
 #include <gsl/gsl_vector_double.h>
 #include "gmock/gmock.h"
-#include "matrix.hpp"
+#include "GSL_wrappers/matrix.hpp"
 
 using GSL_Wrappers::Matrix;
 using GSL_Wrappers::Vector;

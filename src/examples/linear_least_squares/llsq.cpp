@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <numeric>
 #include <gnuplot_i.hpp>
-#include <linear_least_quares.hpp>
+#include <GSL_wrappers/linear_least_quares.hpp>
 
 int main ()
 {

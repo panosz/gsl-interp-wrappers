@@ -1,11 +1,11 @@
 
 add_library(${PROJECT_NAME} SHARED
-        include/Interpolant1D.hpp
+        include/GSL_wrappers/Interpolant1D.hpp
         src/Interpolant1D.cpp
         include/gsl_wrappers.hpp
-        src/gsl_wrappers.cpp include/matrix.hpp src/matrix.cpp src/linear_least_quares.cpp
-        include/linear_least_quares.hpp include/hermite_polynomial_interpolation.hpp
-        src/hermite_polynomial_interpolation.cpp include/minimization.hpp src/minimization.cpp)
+        src/gsl_wrappers.cpp include/GSL_wrappers/matrix.hpp src/matrix.cpp src/linear_least_quares.cpp
+        include/GSL_wrappers/linear_least_quares.hpp include/GSL_wrappers/hermite_polynomial_interpolation.hpp
+        src/hermite_polynomial_interpolation.cpp include/GSL_wrappers/minimization.hpp src/minimization.cpp)
 
 
 find_package(BLAS REQUIRED)
